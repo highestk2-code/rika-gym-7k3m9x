@@ -6,147 +6,216 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="筑駒理科ジム">
-<meta name="theme-color" content="#0f6fa8">
+<meta name="theme-color" content="#1E3A5F" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0E10" media="(prefers-color-scheme: dark)">
 <meta name="robots" content="noindex, nofollow">
 <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAI20lEQVR42u2de2wVVR7Hz2Nmer2lL0qpvBSsPLYsFI2osFFhs7or7AImJrLZP5ZsjNmwbDAR/8HsZiOrqzExxD9MlE3QqAlEN64bAywKYSkLaBV1Qdu0lFp2+7BQae3z3plzzv4x9xaQzuV27tzbeXw/Ic2l7Uznzu9zf+ec35k5Q8u27iEAjAfDKQCQA0AOADkA5ACQA0AOADkA5ABhRyvA3+jb+QhOdD4of3xvXvdP81Q+hxAhEMV7OaBFaBTxUg5oETJFvJEDWoRSEQ/kyMaMfHedIkgBTnuucmQ4RAjhB1FyiYJ7OaBF6BVxKYfTcUAL3yriIjQMZkSkH+pi0KAFolQHXIQj9yEkyz1twIygpJCJ6sJgBvzwQA6YETU/MGUPcpYDaSOCyYNheIJ5lpzkwLwaieTUDEPaQPJwLwfSRmSTB0PaQPLAUBbg1gRQMDnQ4Yhyt4Ohw4FuB5oVgD4HgBwAcgDIASAHgBwAcgDIASAHAJADQA4AOQDkAJADQA5AsEitHzm67YEfzCgTUgmprNRXKaSyhBRKWVJZQkmlpFQ5/iFKCWeMM6oxqjHKGeWMaZxySjXONEYZo0MJq/ZP/xhJCsiRLdvur725stgUKimEJVRSSFNI05KmlElLZowH1Tk1ONM50zkzNKYxZmhM5+x0x6VXjrYQQmaWx3XOdO6Ld2rEjWJDgxwT4Lf3LZg2pcjbfbb3TrflsKT01Zu1ck5R0epzMErzsM/UC+GzYFhCQg6/YApkDsgRkGAgc/gqGAqyQo4AfFL9bEYU6xxO8fh2KHnLU+9m2PD0H38+Z2rxuD/69e7j733x3wzbNmxfM396SbDaFJ9mjqTwftw/bIq0HD6Kh0DmmCgPvnS4Im4kLGkKmbBEMvUi9d/6bT/94azycTfcuKv+SPM3BmeGxgyNG5wVaUzXmMFZz8CoD/scpr8zhx/laLs42OZ221FTjJoiKB9WfycOTLwByAEgB4AcAHIAjFZ8Qdzgf16/LMMvlMcNpx/98s65y+dWZtjW8ysQIEdBiel8y+qF7rb92eKZZDGaFYA+BwCQA0AOADkA5AAYyhaWSbnYB3K44bmHbrulqsQUMmlJ+6ampCXte5yqy2JOW/3qrnn3Lag2NGbwy9dzaJy99VFb5uCBIMmxcfncDBVJJ36xdPa432+9MAA5wtPnYMzL+5oo4owOKYAcAHIAyFFgOKM4GMjhMDzjPoqH5m85fDqU7ewbKanWTSlNS5pCJoW0hF3wUHMq4jGHtVc6+oaTlrRXa7HvXrHX0OkdSlwRD4bMEWw57n5uv9OPjj3peFPTE29/euDLTncf1oq40bxjPXF1NddLG5e/8PDtGbatLC5ySGMMcviqWWFOS3hNL4m522fZDToheviaFfQ50O2AHH4Nhp9blgjKwTC0hhzBaFZ0ZA5kjiD2OSI3WrkwMFpZXCSVvXyxtNcxtqQUQgmlLJFa0Fiq76+OUFNV4vQp7+gbHhg1rx0A6ZxyRjWWWq9YS69gzBnVOOOUdvYPDyYsyOEXVjx/wN2GGa4E2/7u56G8XgQTbwByAMjhRElMR7AhB7m2tv2HtUve37IawUaH9DKlMX3zqgWbVy0sjelnOvoQbMhBCCFTi43NqxY+ds/80nRrkvD3oo6QoxDMKo//btWCTStr4sZVb01P15oMzuZNm6IIsYS07CKHkJaUlkhVPuzHN3lY49L42POamG6/5qniR8KSX/cOQo5CsO2B2rrZFeOWqorS1wc9es/8ZzcsIxNfWzjDJMjuTSuUWkFczZvc8cy+sxcGIEfeueNmx7WXYlpKjmKDez4fxih1fW/MDQYnGK1MLn6OAeSYZDI/ORAEu1kpjelrl87asGzOohllLjY/2XYRwQ6bHLdWlfykdsaDi2eurKlyd+mDUuS1E63b//4Zgh14ORilt04vuXNu5cqaqnvnV8+uiOeytw8bu57df+bU+W8R6cDLETe05h3rpxR5cFSHm7r/cuBMw9e93/v+iOmvJ/yOmgJyZMVw0vrfpaFFN5a53oNS5GBj54sfNH7k0MnYVd9yqKmbEjJ2mY8plEgVwVIVMLs+RnJb2YdSoo09rpwzLX2xj13+0jjljCUt0dIzADmy5XjrRXdymEL+7dT5nYeamrr7M/xawpKNXf0FeCNKEVNIH+eFAMrx79ae3/yoZkKb9I+Yb5w89/K/mjv7htFRCLMc9S092f9yU3f/q/Utexrah5MWYhl+OXoGRr/q6q/NWMwQUu0/0/Fq/dmjLd8ghNGqcxxq7HKSo7136I2T5978uK27fwTBi6Ic//yq6/c/XkSuetKs3He64/UT5440dyuFqEVYjhPnLlwcTNhLHlwaTu6qb/nrsbNjD4YFkZZDSPXMvtNPr6vb+0n70+//57tx7he6DgurS5fMKpfKLmakblJK1TCkFFKJ1Gulsk5EuuZYvL+psniJw5Ih6ZoH1Rjl6X9j9Q9GU3c3cUYZJQ3tve29Q5DjOuw+3rr7eKvrzZ9as2Rd3eyCHe2OdXWE1OW+n13HWp585xTBlH2U19oKyn28uKkJQA4AOQDkAJADQA7PGQnmTLnfpg/DeTvk1r0NLxz88soi2BWFr9RqPtL+WpBqPKM0vbjP5SIYv/o1JeT8pSHIkXcGE1ZT93f+OR6pVFIoItCsAPQ5AOQAkAMAyAEgB4AcAHIAyAEgB4AcAHIAyAEgBwCQA0AOADkA5AA+lqNv5yM4ZYFmQhG8jhzlj+/FCQ0xmeOLZgVADlAAOdDtiEiHIys50O2IZofDZbOC5BGFtJGtHEgeEUwb7jukSB6hTxsTkONa0eBHcM3IsinAUBZ4IQeSR6TSxoQzB/yIjhlumhX4EREziFeLt9jHgRFvoMcm3nRInSRACvGzGS4+urRs6x7P9UQK8VvCcBcR93JAkRBr4Y0cWbYmEGVSOhY5nnYP5EBvgwR29qQQckCRkGnhvRxQJDRa5EsOKBICLfIrB0QJqBCFlgMQXH0OIAeAHABy4BQAyAEgB4AcAHKAyeT/C6zRgVpsZIMAAAAASUVORK5CYII=">
 <title>筑駒理科ジム</title>
 <!-- built 2026-10-04 / 単一ファイル・通信なし -->
 <style>
+/* ============================================================
+   トークン（Global → Semantic → Component）
+   ============================================================ */
 :root{
-  --bg:#f4f6f8; --card:#fff; --ink:#16293a; --sub:#5d7389; --line:#dde5ec;
-  --accent:#0f6fa8; --accent2:#0a5580; --ok:#15803d; --okbg:#e8f6ed;
-  --ng:#b91c1c; --ngbg:#fdeceb; --warn:#9a5b00; --warnbg:#fff6e5;
-  --r:14px; --shadow:0 1px 2px rgba(16,40,64,.06),0 4px 16px rgba(16,40,64,.06);
+  /* -- Global：生の色 -- */
+  --g-ink-900:#1A1A1A; --g-ink-600:#51606d; --g-ink-300:#dde3e8; --g-ink-100:#eef1f4;
+  --g-paper:#FAFAF7; --g-white:#FFFFFF;
+  --g-indigo-700:#15293d; --g-indigo-600:#1E3A5F; --g-indigo-500:#2b4f7a; --g-indigo-100:#e7edf5;
+  --g-green-700:#225e26; --g-green-600:#2E7D32; --g-green-100:#e4f2e6;
+  --g-red-700:#9e2020; --g-red-600:#C62828; --g-red-100:#fbe6e5;
+  --g-amber-700:#8a4a00; --g-amber-600:#b06a00; --g-amber-100:#fff1dc;
+  --g-gold-600:#b07500; --g-gold-100:#fff6df;
+
+  /* -- Semantic：役割に名前をつける -- */
+  --bg:var(--g-paper); --card:var(--g-white); --ink:var(--g-ink-900); --sub:var(--g-ink-600); --line:var(--g-ink-300);
+  --accent:var(--g-indigo-600); --accent2:var(--g-indigo-700); --accent-soft:var(--g-indigo-100);
+  --ok:var(--g-green-600); --ok-ink:var(--g-green-700); --okbg:var(--g-green-100);
+  --ng:var(--g-red-600); --ng-ink:var(--g-red-700); --ngbg:var(--g-red-100);
+  --warn:var(--g-amber-600); --warn-ink:var(--g-amber-700); --warnbg:var(--g-amber-100);
+  --gold:var(--g-gold-600); --goldbg:var(--g-gold-100);
+
+  /* -- Component：用途ごとの最終値 -- */
+  --r:16px; --r-sm:10px;
+  --shadow:0 1px 2px rgba(20,30,40,.05),0 6px 20px rgba(20,30,40,.07);
+
+  /* -- モーション：既定値。reduced-motion で上書きされる -- */
+  --dur-fast:130ms; --dur-base:220ms; --dur-slow:320ms;
+  --ease-out:cubic-bezier(.2,.7,.3,1); --ease-in:cubic-bezier(.5,0,.8,.3);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0E0E10; --card:#17181b; --ink:#ECECEC; --sub:#a9b2ba; --line:#2b2d31;
+    --accent:#7FA8D1; --accent2:#9dbfe0; --accent-soft:#1c2a38;
+    --ok:#5fb868; --ok-ink:#8fd796; --okbg:#133420;
+    --ng:#e2746e; --ng-ink:#f0a39e; --ngbg:#3a1a18;
+    --warn:#e3a94e; --warn-ink:#f0c784; --warnbg:#3a2a10;
+    --gold:#e0b64e; --goldbg:#332a10;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.45);
+  }
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
 body{
   background:var(--bg); color:var(--ink);
-  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
-  font-size:17px; line-height:1.7; -webkit-text-size-adjust:100%;
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Noto Sans JP",sans-serif;
+  font-size:16px; line-height:1.8; letter-spacing:.02em; -webkit-text-size-adjust:100%;
   padding-bottom:env(safe-area-inset-bottom);
+  padding-left:env(safe-area-inset-left); padding-right:env(safe-area-inset-right);
+  transition:background-color var(--dur-base) var(--ease-out),color var(--dur-base) var(--ease-out);
 }
 header{
-  position:sticky; top:0; z-index:20; background:#fff; border-bottom:1px solid var(--line);
-  padding:calc(env(safe-area-inset-top) + 10px) 16px 10px; display:flex; align-items:center; gap:12px;
+  position:sticky; top:0; z-index:20; background:var(--card); border-bottom:1px solid var(--line);
+  padding:calc(env(safe-area-inset-top) + 10px) calc(env(safe-area-inset-right) + 16px) 10px calc(env(safe-area-inset-left) + 16px);
+  display:flex; align-items:center; gap:12px;
 }
-header h1{font-size:18px;margin:0;font-weight:700;letter-spacing:.02em}
+header h1{font-size:19px;margin:0;font-weight:700;letter-spacing:.02em}
 header .sp{flex:1}
 .wrap{max-width:860px;margin:0 auto;padding:16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px;margin-bottom:16px}
-h2{font-size:17px;margin:0 0 10px}
-h3{font-size:15px;margin:18px 0 8px;color:var(--sub)}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);
+  padding:20px;margin-bottom:16px;
+  animation:cardIn var(--dur-slow) var(--ease-out) both;
+}
+@keyframes cardIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+h2{font-size:21px;margin:0 0 12px;font-weight:800;letter-spacing:.01em}
+h3{font-size:15px;margin:18px 0 8px;color:var(--sub);font-weight:700}
 p{margin:.5em 0}
 .muted{color:var(--sub);font-size:14px}
-.tiny{color:var(--sub);font-size:13px;line-height:1.6}
-button{font:inherit;color:inherit;cursor:pointer;border-radius:12px;border:1px solid var(--line);background:#fff;padding:14px 16px;min-height:50px}
-button:active{transform:translateY(1px)}
+.tiny{color:var(--sub);font-size:13px;line-height:1.7}
+button{
+  font:inherit;color:inherit;cursor:pointer;border-radius:var(--r-sm);border:1px solid var(--line);
+  background:var(--card);padding:14px 16px;min-height:48px;min-width:44px;
+  transition:transform var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out),background-color var(--dur-fast) var(--ease-out);
+}
+button:active{transform:translateY(1px) scale(.99)}
 button:disabled{opacity:.45;cursor:default}
 .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:700;width:100%}
-.btn-primary:disabled{background:#9fb6c6;border-color:#9fb6c6}
-.btn-ghost{background:#fff}
+.btn-primary:disabled{background:var(--line);border-color:var(--line);color:var(--sub)}
+.btn-ghost{background:var(--card)}
 .grid{display:grid;gap:12px}
 .grid.g2{grid-template-columns:repeat(2,1fr)}
 .grid.g3{grid-template-columns:repeat(3,1fr)}
-.menu button{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:2px;padding:16px}
-.menu .t{font-weight:700}
-.menu .d{font-size:13px;color:var(--sub);line-height:1.5}
-.pill{display:inline-block;font-size:12px;padding:3px 9px;border-radius:999px;background:#eef3f7;color:var(--sub);margin-right:6px}
-.pill.w{background:var(--warnbg);color:var(--warn)}
-.pill.o{background:var(--okbg);color:var(--ok)}
-.pill.n{background:var(--ngbg);color:var(--ng)}
+.menu button{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:3px;padding:16px}
+.menu .t{font-weight:700;font-size:16px}
+.menu .d{font-size:13px;color:var(--sub);line-height:1.6}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent2);margin-right:6px}
+.pill.w{background:var(--warnbg);color:var(--warn-ink)}
+.pill.o{background:var(--okbg);color:var(--ok-ink)}
+.pill.n{background:var(--ngbg);color:var(--ng-ink)}
 table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0}
-th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
-th{background:#f7fafc;font-weight:600}
-.qbox{font-size:18px;line-height:1.8;margin:4px 0 14px}
-.cond{background:#f7fafc;border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 8px 8px 0;font-size:15px;margin:10px 0}
+th,td{border:1px solid var(--line);padding:9px 10px;text-align:left}
+th{background:var(--accent-soft);font-weight:700;color:var(--accent2)}
+/* ---- 問題文：本文より明確に大きい階層 ---- */
+.qbox{font-size:21px;line-height:1.75;font-weight:700;margin:6px 0 14px;letter-spacing:.015em}
+.lead{background:var(--accent-soft);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 14px;margin:4px 0 12px;font-size:15px;line-height:1.8}
+.leadhd{font-size:12px;font-weight:700;color:var(--accent2);letter-spacing:.06em;margin-bottom:4px}
+.cond{background:var(--accent-soft);border-left:3px solid var(--accent);padding:9px 12px;border-radius:0 var(--r-sm) var(--r-sm) 0;font-size:15px;margin:10px 0}
 /* 選択肢の○×△ */
-.optrow{display:flex;align-items:stretch;gap:10px;border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:10px;background:#fff}
-.optrow .ot{flex:1;display:flex;align-items:center;font-size:16px;line-height:1.6}
+.optrow{
+  display:flex;align-items:stretch;gap:10px;border:1px solid var(--line);border-radius:var(--r-sm);padding:10px;margin-bottom:10px;background:var(--card);
+  transition:background-color var(--dur-base) var(--ease-out),border-color var(--dur-base) var(--ease-out),transform var(--dur-fast) var(--ease-out);
+}
+.optrow .ot{flex:1;display:flex;align-items:center;font-size:16px;line-height:1.7}
 .optrow .ob{display:flex;gap:6px;flex-shrink:0;align-items:center}
-.jb{width:48px;min-height:46px;padding:0;font-size:19px;font-weight:700;border-radius:10px;background:#fff}
+.jb{width:48px;min-height:46px;padding:0;font-size:19px;font-weight:700;border-radius:var(--r-sm);background:var(--card)}
 .jb.sel-o{background:var(--ok);border-color:var(--ok);color:#fff}
 .jb.sel-x{background:var(--ng);border-color:var(--ng);color:#fff}
-.jb.sel-q{background:#b08400;border-color:#b08400;color:#fff}
-.optrow.res-ok{background:var(--okbg);border-color:#9ed4b2}
-.optrow.res-ng{background:var(--ngbg);border-color:#e8a9a5}
-.mark{font-size:13px;font-weight:700;padding:2px 8px;border-radius:999px;align-self:center;white-space:nowrap}
+.jb.sel-q{background:var(--gold);border-color:var(--gold);color:#fff}
+.optrow.res-ok{background:var(--okbg);border-color:var(--ok);animation:settleOk var(--dur-base) var(--ease-out) both}
+.optrow.res-ng{background:var(--ngbg);border-color:var(--ng);animation:shakeX var(--dur-slow) var(--ease-out) both}
+@keyframes settleOk{0%{transform:translateY(-2px)}100%{transform:translateY(0)}}
+@keyframes shakeX{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}50%{transform:translateX(6px)}75%{transform:translateX(-4px)}}
+.mark{font-size:13px;font-weight:700;padding:2px 9px;border-radius:999px;align-self:center;white-space:nowrap;animation:markIn var(--dur-base) var(--ease-out) both}
+@keyframes markIn{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
 .mark.ok{background:var(--ok);color:#fff}
 .mark.ng{background:var(--ng);color:#fff}
-.numin{width:100%;font:inherit;font-size:22px;padding:14px;border:1px solid var(--line);border-radius:12px;text-align:center}
-.svgbox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;overflow-x:auto}
+.numin{width:100%;font:inherit;font-size:22px;padding:14px;border:1px solid var(--line);border-radius:var(--r-sm);text-align:center;background:var(--card);color:var(--ink)}
+.svgbox{background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);padding:8px;overflow-x:auto}
 svg{display:block;max-width:100%;height:auto}
-svg .w{stroke:#16293a;stroke-width:3;fill:none}
-svg .thick{stroke:#16293a;stroke-width:6;fill:none}
-svg .bulb circle{stroke:#16293a;stroke-width:3;fill:#fffbe8}
-svg .bulb path{stroke:#16293a;stroke-width:2.5;fill:none}
-svg .bulb text,svg .sw text,svg .batt text{font-size:17px;font-weight:700;fill:#16293a;text-anchor:middle;font-family:inherit}
-svg .sw circle{fill:#16293a}
-svg .sw path{stroke:#16293a;stroke-width:3.5;fill:none}
-svg .batt path{stroke:#16293a}
-.expl{background:#f7fafc;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:12px;font-size:15px;white-space:pre-wrap;line-height:1.75}
-.bar{height:10px;background:#e8eef4;border-radius:999px;overflow:hidden;margin:6px 0 2px}
-.bar>i{display:block;height:100%;background:var(--accent)}
-.timer{font-size:68px;font-weight:800;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;margin:8px 0;transition:background-color .3s}
+svg .w{stroke:var(--ink);stroke-width:3;fill:none}
+svg .thick{stroke:var(--ink);stroke-width:6;fill:none}
+svg .bulb circle{stroke:var(--ink);stroke-width:3;fill:#fffbe8}
+svg .bulb path{stroke:var(--ink);stroke-width:2.5;fill:none}
+svg .bulb text,svg .sw text,svg .batt text{font-size:17px;font-weight:700;fill:var(--ink);text-anchor:middle;font-family:inherit}
+svg .sw circle{fill:var(--ink)}
+svg .sw path{stroke:var(--ink);stroke-width:3.5;fill:none}
+svg .batt path{stroke:var(--ink)}
+.expl{background:var(--accent-soft);border:1px solid var(--line);border-radius:var(--r-sm);padding:13px 14px;margin-top:12px;font-size:15px;white-space:pre-wrap;line-height:1.8}
+.bar{height:10px;background:var(--g-ink-100);border-radius:999px;overflow:hidden;margin:6px 0 2px}
+.bar>i{display:block;height:100%;background:var(--accent);transition:width var(--dur-slow) var(--ease-out)}
+@media (prefers-color-scheme: dark){ .bar{background:#23252a} }
+.timer{font-size:68px;font-weight:800;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;margin:8px 0;transition:background-color var(--dur-slow) var(--ease-out)}
 .timer.low{color:var(--ng)}
-.timer.flash{background:#fff3b0;border-radius:12px;animation:tflash 1.2s ease}
-@keyframes tflash{0%{background:#ffe066}100%{background:transparent}}
+.timer.flash{background:var(--goldbg);border-radius:var(--r-sm);animation:tflash 1.2s var(--ease-out)}
+@keyframes tflash{0%{background:var(--gold)}100%{background:transparent}}
 .should-note{text-align:center;color:var(--sub);font-size:15px;margin:0}
 .should-note.changed{color:var(--ng);font-weight:700}
-.kv{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:15px}
 .kv:last-child{border-bottom:0}
 .kv b{font-variant-numeric:tabular-nums}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom) + 20px);background:#16293a;color:#fff;padding:12px 18px;border-radius:999px;font-size:15px;z-index:60;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast{
+  position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom) + 20px);
+  background:var(--accent2);color:#fff;padding:12px 18px;border-radius:999px;font-size:15px;z-index:60;opacity:0;pointer-events:none;
+  transition:opacity var(--dur-base) var(--ease-out);
+}
 .toast.on{opacity:1}
-.hint{border:1px dashed var(--line);border-radius:12px;font-size:14px;color:var(--sub);background:#fcfdfe}
+.hint{border:1px dashed var(--line);border-radius:var(--r-sm);font-size:14px;color:var(--sub);background:var(--bg)}
 .hint>summary{display:block;list-style:none;padding:12px 14px;min-height:44px;line-height:22px;cursor:pointer}
 .hint>summary::-webkit-details-marker{display:none}
 .hint>summary::before{content:'▸ ';color:var(--accent);font-weight:700}
 .hint[open]>summary::before{content:'▾ '}
 .hint>div{padding:0 14px 12px}
-textarea{width:100%;font:inherit;font-size:13px;border:1px solid var(--line);border-radius:12px;padding:10px;min-height:120px}
+textarea{width:100%;font:inherit;font-size:13px;border:1px solid var(--line);border-radius:var(--r-sm);padding:10px;min-height:120px;background:var(--card);color:var(--ink)}
 @media (max-width:520px){ .grid.g3{grid-template-columns:1fr 1fr} .timer{font-size:56px} }
 
-/* ---- 今日の状態 ---- */
-.hero{background:linear-gradient(135deg,#0f6fa8,#0a5580);color:#fff;border:0}
+/* ============================================================
+   モーションを抑える（CLAUDE.md §・WCAG 2.3.3 準拠）
+   ============================================================ */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important}
+}
+
+/* ---- 今日の状態（ホームの最上段） ---- */
+.hero{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#fff;border:0}
 .hero h2{color:#fff}
-.hero .big{font-size:40px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
-.hero .sub{opacity:.9;font-size:14px}
+.hero .big{font-size:38px;font-weight:800;line-height:1.15;font-variant-numeric:tabular-nums}
+.hero .sub{opacity:.92;font-size:13px}
 .hero .row{display:flex;gap:18px;align-items:flex-end;flex-wrap:wrap;margin:6px 0 2px}
 .hero .bar{background:rgba(255,255,255,.25)}
 .hero .bar>i{background:#ffd34d}
 .chip{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.18);
-  border-radius:999px;padding:5px 12px;font-size:13px;font-weight:700;margin:4px 6px 0 0}
+  border-radius:999px;padding:6px 13px;font-size:13px;font-weight:700;margin:4px 6px 0 0}
 /* ---- 分野ごとの出来ぐあい ---- */
-.skill{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.skill{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)}
 .skill:last-child{border-bottom:0}
 .skill .nm{width:7.5em;flex-shrink:0;font-size:14px;font-weight:700}
-.skill .tr{flex:1;height:14px;background:#eef3f7;border-radius:999px;overflow:hidden;position:relative}
-.skill .tr>i{display:block;height:100%;border-radius:999px;transition:width .5s}
+.skill .tr{flex:1;height:14px;background:var(--g-ink-100);border-radius:999px;overflow:hidden;position:relative}
+@media (prefers-color-scheme: dark){ .skill .tr{background:#23252a} }
+.skill .tr>i{display:block;height:100%;border-radius:999px;transition:width var(--dur-slow) var(--ease-out)}
 .skill .vl{width:5.2em;text-align:right;font-size:13px;font-variant-numeric:tabular-nums;color:var(--sub)}
-.lv-0 .tr>i{background:#d9e2ea}
-.lv-1 .tr>i{background:#e8a33d}
-.lv-2 .tr>i{background:#5aa9d6}
-.lv-3 .tr>i{background:#2f9e5e}
-/* ---- 注意すること ---- */
-.watch{display:flex;gap:10px;background:var(--warnbg);border:1px solid #f0dcb4;
-  border-radius:12px;padding:12px 14px;margin:8px 0;font-size:15px;line-height:1.7}
+.lv-0 .tr>i{background:var(--g-ink-300)}
+.lv-1 .tr>i{background:var(--warn)}
+.lv-2 .tr>i{background:var(--accent)}
+.lv-3 .tr>i{background:var(--ok)}
+/* ---- 注意すること：色だけに頼らず記号も付ける ---- */
+.watch{display:flex;gap:10px;background:var(--warnbg);border:1px solid var(--warn);
+  border-radius:var(--r-sm);padding:13px 14px;margin:8px 0;font-size:15px;line-height:1.75}
 .watch .ic{font-size:20px;flex-shrink:0}
-.good{background:var(--okbg);border-color:#bfe3cd}
+.good{background:var(--okbg);border-color:var(--ok)}
 /* ---- ほめる表示 ---- */
 .praise{text-align:center;padding:10px 0 2px}
 .praise .em{font-size:46px;line-height:1}
 .praise .tx{font-weight:800;font-size:19px;margin-top:4px}
 .praise .sb{color:var(--sub);font-size:14px;margin-top:2px}
 .ring{display:flex;gap:6px;justify-content:center;margin:10px 0 2px;flex-wrap:wrap}
-.ring span{width:13px;height:13px;border-radius:50%;background:#e2e9ef}
+.ring span{width:13px;height:13px;border-radius:50%;background:var(--g-ink-300);transition:background-color var(--dur-base) var(--ease-out)}
 .ring span.o{background:var(--ok)}
 .ring span.x{background:var(--ng)}
-.ring span.n{background:#cfd9e2}
-/* ---- 連続記録 ---- */
-.streakbox{display:flex;align-items:center;gap:12px;background:#fff8e6;border:1px solid #f3e1b0;
-  border-radius:12px;padding:12px 14px;font-size:15px}
-.streakbox .n{font-size:30px;font-weight:800;color:#b07500;line-height:1}
+.ring span.n{background:var(--g-ink-300)}
+/* ---- 連続記録：翌日も続けたくなる見え方 ---- */
+.streakbox{display:flex;align-items:center;gap:12px;background:var(--goldbg);border:1px solid var(--gold);
+  border-radius:var(--r-sm);padding:13px 14px;font-size:15px}
+.streakbox .n{font-size:32px;font-weight:800;color:var(--gold);line-height:1;font-variant-numeric:tabular-nums}
 
 </style>
 </head>
@@ -231,9 +300,11 @@ const SELECTALL = [
   {
     id: 'SA08', cat: '化学', src: 'チェック表 化学「金属に共通する性質」',
     q: '次のうち、すべての金属に共通する性質をすべて選べ。',
-    opts: ['みがくと光る（光沢がある）', '磁石につく', '電気を通す', '水に沈む', '熱を通す', 'たたくとうすく広がる（展性）', '引っぱると細長くのびる（延性）', '固い'],
+    opts: ['みがくと光る（光沢がある）', '磁石につく', '電気を通す', '銀色をしている', '熱を通す', 'たたくとうすく広がる（展性）', '引っぱると細長くのびる（延性）', 'かたい'],
     ans: [0, 2, 4, 5, 6],
-    exp: '共通するのは 光沢・電気と熱を通す・展性と延性。磁石につく、水に沈む、固いは共通ではない。',
+    exp: '共通するのは 光沢・電気と熱を通す・展性と延性の4つ。\n'
+      + '磁石につくのは鉄など一部だけ（アルミニウムや銅はつかない）。銀色も共通ではない（銅は赤っぽく、金は黄色）。\n'
+      + 'かたさも共通ではない（なまりのようにやわらかい金属もある）。',
   },
   {
     id: 'SA09', cat: '化学', src: 'チェック表 化学「金属と水溶液」',
@@ -530,23 +601,26 @@ const CIRCUITS = [
       { type: 'switch', a: 'm', b: 'n', id: 'S' },
     ],
     svg: (closed) => `
-      <path d="M70 50 H180" class="w"/>
-      ${bulbSvg(180, 50, 'A')}
-      <path d="M240 50 H300" class="w"/>
-      <path d="M300 50 V125 H230" class="w"/>
-      ${bulbSvg(230, 125, 'B')}
-      <path d="M290 125 H450" class="w"/>
-      <path d="M300 50 V200 H230" class="w"/>
-      ${bulbSvg(230, 200, 'C')}
-      <path d="M290 200 H450" class="w"/>
-      <path d="M300 50 H330" class="w"/>
-      ${switchSvg(330, 50, 'S', closed.S)}
-      <!-- (switchは x=330 で入って x=420 で出る) -->
-      <path d="M420 50 H450 V260" class="w"/>
+      <path d="M70 50 H120" class="w"/>
+      ${bulbSvg(120, 50, 'A')}
+      <path d="M180 50 H210" class="w"/>
+      <!-- 節点m は x=210 の縦線。ここから右へ、豆電球B・Cへ素直に分かれる -->
+      <path d="M210 50 V200" class="w"/>
+      <circle cx="210" cy="125" r="4" fill="#16293a"/>
+      <circle cx="210" cy="200" r="4" fill="#16293a"/>
+      <path d="M210 125 H240" class="w"/>
+      ${bulbSvg(240, 125, 'B')}
+      <path d="M300 125 H450" class="w"/>
+      <path d="M210 200 H240" class="w"/>
+      ${bulbSvg(240, 200, 'C')}
+      <path d="M300 200 H450" class="w"/>
+      <path d="M210 50 H250" class="w"/>
+      ${switchSvg(250, 50, 'S', closed.S)}
+      <path d="M340 50 H450 V260" class="w"/>
       <path d="M450 125 V260 M450 200 V260" class="w"/>
-      <path d="M70 50 V260 H230" class="w"/>
-      <path d="M244 260 H450" class="w"/>
-      ${batterySvg(230, 260, 1)}
+      <path d="M70 50 V260 H190" class="w"/>
+      <path d="M204 260 H450" class="w"/>
+      ${batterySvg(190, 260, 1)}
     `,
   },
   {
@@ -566,7 +640,7 @@ const CIRCUITS = [
       ${bulbSvg(140, 50, 'A')}
       <path d="M200 50 H260" class="w"/>
       ${bulbSvg(260, 50, 'B')}
-      <path d="M320 50 H450" class="w"/>
+      <path d="M320 50 H450 V170" class="w"/>
       <path d="M200 50 V95" class="w"/>
       ${switchSvg(200, 95, 'S', closed.S)}
       <path d="M290 95 H320 V50" class="w"/>
@@ -805,6 +879,32 @@ function leverTipping({ L, W, p, w }) {
 // 軽い棒のつりあい（重さを考えなくてよい棒。左の w1g×d1cm と右の ?g×d2cm がつりあう）
 function leverBalance({ w1, d1, d2 }) { return round(w1 * d1 / d2, 6); }
 
+// 重さのある棒のつりあい。
+//   棒: 長さ L・重さ W（重さは真ん中にかかる）。支点は左はしから p。
+//   左に w1 を dL（支点から左へのきょり）、右に w2 を dR（支点から右へのきょり）。
+//   棒の重心は支点から (L/2 - p) の位置。これが正なら右側、負なら左側にある。
+// 返すのは「右にいくつの重さを下げればつりあうか」。
+function leverWithBar({ L, W, p, w1, dL }) {
+  const barArm = L / 2 - p;                 // ＋なら重心は支点の右
+  const leftMoment = w1 * dL;               // 左にかたむける
+  const rightMoment = W * barArm;           // 棒の重さ（右ならプラス）
+  return { barArm: round(barArm, 6), leftMoment, barMoment: round(rightMoment, 6),
+           need: round(leftMoment - rightMoment, 6) };   // 右にあと何g·cm 必要か
+}
+
+// さおばかり。軽い棒の左はしに皿（重さ s）、品物 X をのせ、
+// 支点から右 d のところに分銅 M を下げてつりあう。
+//   (s + X) × p = M × d
+function saobakari({ p, s, M, d }) { return round(M * d / p - s, 6); }
+
+// 2本の棒をつないだとき、上の棒が下の棒へかける力。
+//   上の棒（長さ L1・重さ W1）の両はしを、下の棒の2点で支える。
+//   上の棒の重心が支点1から a、支点2から b のところにあるとき、
+//   支点1にかかる力 = W1 × b ÷ (a+b)
+function stackedBar({ W1, a, b }) {
+  return { f1: round(W1 * b / (a + b), 6), f2: round(W1 * a / (a + b), 6) };
+}
+
 // 両端を支える力（距離の逆比）
 function twoSupports({ L, W, w, x }) {
   // 左端と右端で支える。棒の重心 L/2、おもり w が位置 x
@@ -990,6 +1090,31 @@ function selfTest() {
   // --- 軽い棒のつりあい ---
   t('軽い棒のつりあい 30g×20cm ＝ ?g×15cm', leverBalance({ w1: 30, d1: 20, d2: 15 }), 40);
   t('【対照実験】つりあいの式を取り違えたら不一致', leverBalance({ w1: 30, d1: 20, d2: 15 }) === 30, false);
+
+  // --- 重さのある棒のつりあい ---
+  // 長さ60cm・重さ120gの棒。支点は左はしから20cm → 重心は支点の右10cm
+  // 左20cmに90g → 左のモーメント1800。棒が右へ120×10=1200。残り600を右で作る
+  t('重さのある棒: 重心の位置と必要なモーメント',
+    leverWithBar({ L: 60, W: 120, p: 20, w1: 90, dL: 20 }),
+    { barArm: 10, leftMoment: 1800, barMoment: 1200, need: 600 });
+  // 棒の重さだけでつりあう場合（右に何も要らない）
+  t('重さのある棒: 棒だけでつりあうと need=0',
+    leverWithBar({ L: 60, W: 120, p: 20, w1: 60, dL: 20 }).need, 0);
+  // 【対照実験】棒の重さを忘れると答えがずれること（典型的なまちがい）
+  t('【対照実験】棒の重さを入れないと値がちがう',
+    leverWithBar({ L: 60, W: 120, p: 20, w1: 90, dL: 20 }).need === 1800, false);
+
+  // --- さおばかり ---
+  // 支点から左10cmに皿(20g)と品物。分銅50gを支点から右30cmで つりあう
+  // (20+X)×10 = 50×30 = 1500 → 20+X = 150 → X = 130
+  t('さおばかり 品物の重さ', saobakari({ p: 10, s: 20, M: 50, d: 30 }), 130);
+  t('【対照実験】皿の重さを引き忘れると値がちがう',
+    saobakari({ p: 10, s: 20, M: 50, d: 30 }) === 150, false);
+
+  // --- 2本の棒を重ねる ---
+  // 重さ60gの棒の重心が、支点1から20cm・支点2から40cm → 支点1に40g、支点2に20g
+  t('重ねた棒: 近いほうに大きな力', stackedBar({ W1: 60, a: 20, b: 40 }), { f1: 40, f2: 20 });
+  t('重ねた棒: 真ん中なら半分ずつ', stackedBar({ W1: 60, a: 30, b: 30 }), { f1: 30, f2: 30 });
   return results;
 }
 
@@ -1007,7 +1132,7 @@ if (typeof module !== 'undefined' && require.main === module) {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = { solveCircuit, brightnessOrder, leverTipping, leverBalance, twoSupports, spring, springCut,
+  module.exports = { solveCircuit, brightnessOrder, leverTipping, leverBalance, leverWithBar, saobakari, stackedBar, twoSupports, spring, springCut,
     solCrystal, solLeftover, solResidue, solWaterNeeded, solPercent, boardOptions, selfTest };
 }
 
@@ -1324,13 +1449,13 @@ function genCircuit() {
       cond: '豆電球A・B・Cは同じもの。電池は端子' + b2.batName + 'につながっている。',
       key: 'circ:board:' + b2.batName,
       q: '2つの端子を導線で1本つなぐ。つかない豆電球がちょうど2個になるつなぎ方を、すべて選べ。',
-      hint: '1組ずつ順番に試す。導線だけでつながった輪の中にある豆電球には、電流が流れない。',
+      hint: 'つかない理由は2つある。①導線だけでできた近道ができて、遠回りになった豆電球に電流が流れない。②電池までの道が切れていて、行き止まりの豆電球に電流が流れない。',
       selectAll: {
         opts: b2.usable.map(o => '端子' + o.label),
         ans: b2.usable.map((o, i) => o.offCount === 2 ? i : -1).filter(i => i >= 0),
       },
       exp: b2.usable.map(o => '端子' + o.label + ' … つかないのは ' + (o.offCount ? o.off.join('・') + '（' + o.offCount + '個）' : 'なし')).join('\n')
-        + '\n（電池がショートしてしまう組は、つないではいけないので選択肢にない）',
+        + '\n（電池の＋と−が導線だけでつながってしまう組は、電池がいたむのでつないではいけない。だから選択肢に入れていない）',
     };
   }
   const { c, st, r, label } = base;
@@ -1383,11 +1508,27 @@ function genCircuitBatch(n) {
   return out;
 }
 function expCircuit(ids, r) {
-  const f = x => (Math.abs(x) < 1e-9 ? '0（つかない）' : (Math.round(x * 1000) / 1000).toString());
-  return '電流の大きさ（豆電球1個のときを1とする）\n'
-    + ids.map(i => `  ${i} … ${f(r.bulbs[i])}`).join('\n')
-    + `\n明るい順: ${brightnessOrder(r.bulbs)}`;
+  // 電流は整数の比で見せる。⛔ 0.667 のような丸めた小数を正解として出さない。
+  const vals = ids.map(i => r.bulbs[i]);
+  const pos = vals.filter(v => v > 1e-9);
+  const lines = [];
+  if (pos.length) {
+    const unit = Math.min(...pos);
+    const ratio = vals.map(v => (v < 1e-9 ? 0 : Math.round(v / unit * 6) / 6));
+    // 6倍して整数になるかを見る（1/2・1/3・2/3 まで扱える）
+    const m6 = ratio.map(x => Math.round(x * 6));
+    const g = m6.filter(x => x > 0).reduce((a, b) => { while (b) { [a, b] = [b, a % b]; } return a; }, 0);
+    const ints = m6.map(x => x / (g || 1));
+    const allInt = ints.every(x => Math.abs(x - Math.round(x)) < 1e-9);
+    if (allInt) {
+      lines.push('電流の比 ' + ids.join('：') + ' ＝ ' + ints.map(x => Math.round(x)).join('：'));
+    }
+  }
+  lines.push(...ids.map(i => '  ' + i + ' … ' + (r.bulbs[i] < 1e-9 ? 'つかない' : '光る')));
+  lines.push('明るい順: ' + brightnessOrder(r.bulbs));
+  return lines.join('\n');
 }
+
 
 /* ============================================================
    生成: 水溶液（とける量の計算）— ① 筑駒で8年中3年が計算問題として出題。
@@ -1469,6 +1610,210 @@ function genSol() {
 }
 
 /* ============================================================
+   連続小問（筑駒の大問と同じ形）
+   ① 筑駒の力学は 2022年13問・2021年10問・2023年9問 がすべて数値計算で、
+      1つの装置の設定を積み上げていく。1問で完結する練習では、そこが鍛えられない。
+   1つの設定（リード文・図・表）から4〜5問を続けて出す。
+   ============================================================ */
+
+// ---- てこの連続小問（筑駒2021・2022・2023の型）----
+function genLeverSet() {
+  for (let t = 0; t < 300; t++) {
+    const L = pick([60, 80, 100]);
+    const p = pick([L / 4, L / 5, L / 2 - 10]).valueOf();
+    if (!Number.isInteger(p) || p <= 0 || p >= L / 2) continue;
+    const W = pick([60, 90, 120, 150, 180]);        // 棒の重さ
+    const barArm = L / 2 - p;                        // 重心は支点の右
+    const dL = p;                                    // 左はしにつるす
+    // (1) 棒だけ：支点の右にどれだけのはたらきがあるか
+    const barMoment = W * barArm;
+    // (2) 左はしに w1 をつるしてつりあわせる
+    const w1 = barMoment / dL;
+    if (!Number.isInteger(w1) || w1 < 20 || w1 > 400) continue;
+    // (3) 左はしに w1 より重い w2 をつるすと、右に何g必要か
+    const w2 = w1 + pick([20, 30, 40, 60]);
+    const dR = pick([10, 15, 20, 25, 30]);
+    const need = (w2 * dL - barMoment) / dR;
+    if (!Number.isInteger(need) || need <= 0 || need > 400) continue;
+    // (4) その w3 を別の位置に動かすと、どこでつりあうか
+    const w3 = pick([need * 2, need / 2]).valueOf();
+    if (!Number.isInteger(w3) || w3 < 10) continue;
+    const dR2 = (w2 * dL - barMoment) / w3;
+    if (!Number.isInteger(dR2) || dR2 <= 0 || dR2 > L - p) continue;
+
+    const lead = '長さ ' + L + 'cm・太さが同じ棒があります。この棒の重さは ' + W + 'g で、重さは棒の真ん中にかかっていると考えます。'
+      + '棒の左はしから ' + p + 'cm のところに糸をつけて、棒をつるしました。';
+    const svg = svgBarSet(L, W, p);
+    return {
+      setId: 'leverset', topic: 'てこ（連続した問題）', lead, svg,
+      subs: [
+        {
+          key: 'leverset:1', q: '(1) 棒の重さがかかっている点（重心）は、糸をつけた点から右へ何 cm のところか。',
+          hint: '重心は棒の真ん中。糸をつけた点は左はしから ' + p + 'cm。', unit: 'cm', ans: barArm,
+          exp: '重心は棒の真ん中なので、左はしから ' + (L / 2) + 'cm。\n糸をつけた点は ' + p + 'cm なので、' + (L / 2) + '−' + p + '＝' + barArm + 'cm 右。',
+        },
+        {
+          key: 'leverset:2', q: '(2) いま棒は右にかたむいている。棒の左はしに何 g のおもりを下げると、水平につりあうか。',
+          hint: '棒の重さ ' + W + 'g が、糸から ' + barArm + 'cm 右にかかっている。左はしは糸から ' + dL + 'cm 左。',
+          unit: 'g', ans: w1,
+          exp: '棒が右へかたむけるはたらき＝' + W + '×' + barArm + '＝' + barMoment + '。\n'
+            + '左はしは糸から ' + dL + 'cm なので、□×' + dL + '＝' + barMoment + ' より □＝' + w1 + 'g。',
+        },
+        {
+          key: 'leverset:3', q: '(3) 左はしのおもりを ' + w2 + 'g に取りかえた。糸をつけた点から右へ ' + dR + 'cm のところに何 g のおもりを下げると、水平につりあうか。',
+          hint: '左のはたらきから、棒の重さの分を引いた残りを、右のおもりで作る。', unit: 'g', ans: need,
+          exp: '左がかたむけるはたらき＝' + w2 + '×' + dL + '＝' + (w2 * dL) + '。\n'
+            + '棒の重さが右へ ' + barMoment + ' 分はたらいているので、残り ' + (w2 * dL) + '−' + barMoment + '＝' + (w2 * dL - barMoment) + ' を右のおもりで作る。\n'
+            + '□×' + dR + '＝' + (w2 * dL - barMoment) + ' より □＝' + need + 'g。',
+        },
+        {
+          key: 'leverset:4', q: '(4) (3) のおもりを ' + w3 + 'g に取りかえる。糸をつけた点から右へ何 cm のところに下げると、水平につりあうか。',
+          hint: '右で作るはたらきの大きさは (3) と同じ。', unit: 'cm', ans: dR2,
+          exp: '右で作るはたらきは (3) と同じ ' + (w2 * dL - barMoment) + '。\n'
+            + w3 + '×□＝' + (w2 * dL - barMoment) + ' より □＝' + dR2 + 'cm。',
+        },
+      ],
+    };
+  }
+  return genLeverSet();
+}
+function svgBarSet(L, W, p) {
+  const sx = 60, scale = 420 / L, X = v => sx + v * scale, barY = 120;
+  let sv = '<svg viewBox="0 0 540 210" role="img" aria-label="糸でつるした棒の図">';
+  // 天井の支えは、糸の位置に合わせて描く（固定だと糸が支えの外に出る）
+  const cL = Math.max(20, Math.min(X(p) - 90, 430)), cR = Math.min(520, Math.max(X(p) + 90, 110));
+  sv += '<path d="M' + cL + ' 30 H' + cR + '" stroke="#16293a" stroke-width="3"/>';
+  sv += '<path d="M' + X(p) + ' 30 V' + (barY - 9) + '" stroke="#16293a" stroke-width="2.5"/>';
+  sv += '<rect x="' + X(0) + '" y="' + (barY - 9) + '" width="' + (L * scale) + '" height="18" rx="4" fill="#dfe8f0" stroke="#16293a" stroke-width="3"/>';
+  sv += '<circle cx="' + X(p) + '" cy="' + barY + '" r="5" fill="#b91c1c"/>';
+  sv += '<text x="' + X(p) + '" y="' + (barY - 18) + '" font-size="14" font-weight="700" fill="#b91c1c" text-anchor="middle">糸（' + p + 'cm）</text>';
+  sv += '<path d="M' + X(L / 2) + ' ' + (barY + 9) + ' v22" stroke="#0f6fa8" stroke-width="3" stroke-dasharray="4 3"/>';
+  sv += '<text x="' + X(L / 2) + '" y="' + (barY + 48) + '" font-size="14" fill="#0f6fa8" text-anchor="middle">重心 ' + (L / 2) + 'cm（棒 ' + W + 'g）</text>';
+  sv += '<text x="' + X(0) + '" y="' + (barY + 75) + '" font-size="13" fill="#5d7389">左はし＝0cm</text>';
+  sv += '<text x="' + X(L) + '" y="' + (barY + 75) + '" font-size="13" fill="#5d7389" text-anchor="end">右はし＝' + L + 'cm</text>';
+  return sv + '</svg>';
+}
+
+// ---- 水溶液の連続小問（筑駒2023の型。1つの表から5問）----
+function genSolSet() {
+  for (let t = 0; t < 300; t++) {
+    const s0 = pick([4, 5, 6, 8]);
+    const st = [pick([4, 6]), pick([8, 10]), pick([10, 15]), pick([15, 20])];
+    const S = { 0: s0, 20: s0 + st[0], 40: s0 + st[0] + st[1], 60: s0 + st[0] + st[1] + st[2], 80: s0 + st[0] + st[1] + st[2] + st[3] };
+    const table = {
+      headers: ['水の温度（℃）', '0', '20', '40', '60', '80'],
+      rows: [['水100gにとける重さ（g）', String(S[0]), String(S[20]), String(S[40]), String(S[60]), String(S[80])]],
+    };
+    const water = pick([100, 150, 200]);
+    const hi = 60, lo = 20;
+    const maxHi = S[hi] * water / 100, maxLo = S[lo] * water / 100;
+    if (!Number.isInteger(maxHi) || !Number.isInteger(maxLo)) continue;
+    const crystal = maxHi - maxLo;
+    if (crystal <= 0) continue;
+    const added = maxHi + pick([10, 15, 20]);
+    // ⛔ 倍率を固定すると答えが毎回同じになる。乱数にして、割り切れる組だけ採用する。
+    const mult = pick([1.5, 2, 2.5, 3, 3.5, 4]);
+    const solid40 = S[40] * mult;
+    const waterNeed = 100 * mult;
+    if (!Number.isInteger(solid40) || !Number.isInteger(waterNeed)) continue;
+
+    const lead = '表は、いろいろな温度の水 100g に、固体Aが何 g までとけるかを示したものです。';
+    return {
+      setId: 'solset', topic: '水溶液（連続した問題）', lead, table,
+      subs: [
+        {
+          key: 'solset:1', q: '(1) ' + hi + '℃の水 ' + water + 'g には、固体Aは何 g までとけるか。',
+          hint: '水が100gのときの ' + S[hi] + 'g を、水の量にあわせて増やす。', unit: 'g', ans: maxHi,
+          exp: '水 ' + water + 'g は 100g の ' + (water / 100) + ' 倍。\n' + S[hi] + '×' + (water / 100) + '＝' + maxHi + 'g。',
+        },
+        {
+          key: 'solset:2', q: '(2) ' + hi + '℃の水 ' + water + 'g に固体Aを ' + added + 'g 入れてかきまぜた。とけ残るのは何 g か。',
+          hint: '(1) で出した「とける量」と比べる。', unit: 'g', ans: added - maxHi,
+          exp: 'とけるのは ' + maxHi + 'g まで。\n' + added + '−' + maxHi + '＝' + (added - maxHi) + 'g がとけ残る。',
+        },
+        {
+          key: 'solset:3', q: '(3) (1) でとけるだけとかした水よう液を ' + lo + '℃まで冷やすと、出てくる固体Aは何 g か。',
+          hint: hi + '℃でとけていた量と、' + lo + '℃でとける量の差。', unit: 'g', ans: crystal,
+          exp: lo + '℃でとけるのは ' + S[lo] + '×' + (water / 100) + '＝' + maxLo + 'g。\n'
+            + maxHi + '−' + maxLo + '＝' + crystal + 'g が出てくる。',
+        },
+        {
+          key: 'solset:4', q: '(4) (3) で冷やしたあとの水よう液（固体を取りのぞいたもの）の重さは何 g か。',
+          hint: '水の重さ＋とけている固体の重さ。水は蒸発していない。', unit: 'g', ans: water + maxLo,
+          exp: '水は ' + water + 'g のまま。とけている固体Aは ' + maxLo + 'g。\n' + water + '＋' + maxLo + '＝' + (water + maxLo) + 'g。',
+        },
+        {
+          key: 'solset:5', q: '(5) 固体A ' + solid40 + 'g を 40℃の水にすべてとかしたい。水は少なくとも何 g いるか。',
+          hint: '水100gに ' + S[40] + 'g とける。' + solid40 + 'g はその何倍か。', unit: 'g', ans: waterNeed,
+          exp: solid40 + '÷' + S[40] + '＝' + (solid40 / S[40]) + ' 倍。\n水も同じだけいるので 100×' + (solid40 / S[40]) + '＝' + waterNeed + 'g。',
+        },
+      ],
+    };
+  }
+  return genSolSet();
+}
+
+// ---- 回路の連続小問（筑駒2023・2024の型。端子のつなぎ方を順に変える）----
+function genBoardSet() {
+  const b = pick(BOARDS);
+  const opts = b.usable;
+  const lead = '図のように、4つの端子1〜4のあいだに、同じ豆電球A・B・Cをつなぎました。'
+    + '電池は端子' + b.batName + 'につながっています。この回路板の2つの端子を、導線で1本だけつなぎます。';
+  const svg = '<svg viewBox="0 0 540 240" role="img" aria-label="回路板の図">' + svgBoard(b.batA, b.batB) + '</svg>';
+  const off2 = opts.filter(o => o.offCount === 2);
+  const off0 = opts.filter(o => o.offCount === 0);
+  const off1 = opts.filter(o => o.offCount === 1);
+  const subs = [];
+  subs.push({
+    key: 'boardset:' + b.batName + ':2', q: '(1) つかない豆電球がちょうど2個になるつなぎ方を、すべて選べ。ひとつも当てはまらないときは、どれにも×をつけてよい。なお、電池の＋と−が導線だけでつながってしまう組は、はじめから選択肢に入れていない。',
+    hint: 'つかない理由は2つ。①導線だけでできた近道ができて、遠回りの豆電球に電流が流れない。②電池までの道が切れていて、行き止まりの豆電球に電流が流れない。',
+    selectAll: { opts: opts.map(o => '端子' + o.label), ans: opts.map((o, i) => o.offCount === 2 ? i : -1).filter(i => i >= 0) },
+    exp: boardExp(opts),
+  });
+  if (off1.length && off1.length < opts.length) subs.push({
+    key: 'boardset:' + b.batName + ':1', q: '(2) つかない豆電球がちょうど1個になるつなぎ方を、すべて選べ。',
+    hint: '近道でつかなくなる豆電球と、行き止まりでつかない豆電球の両方を数える。',
+    selectAll: { opts: opts.map(o => '端子' + o.label), ans: opts.map((o, i) => o.offCount === 1 ? i : -1).filter(i => i >= 0) },
+    exp: boardExp(opts),
+  });
+  if (off0.length && off0.length < opts.length) subs.push({
+    key: 'boardset:' + b.batName + ':0', q: '(3) 3個とも光るつなぎ方を、すべて選べ。',
+    hint: '近道にも行き止まりにもならない組をさがす。',
+    selectAll: { opts: opts.map(o => '端子' + o.label), ans: opts.map((o, i) => o.offCount === 0 ? i : -1).filter(i => i >= 0) },
+    exp: boardExp(opts),
+  });
+  // ⛔ 「3個とも光るのは何通りか」を固定すると、配線によって答えが 0通り になる（300回測って106回）。
+  //    0が答えだと「見落としたのでは」と不安になるので、1通り以上ある数え方を選んで出す。
+  const counts = [
+    { n: off0.length, q: '豆電球が3個とも光る', why: '「つかないのは なし」の組' },
+    { n: off1.length, q: 'つかない豆電球がちょうど1個になる', why: '「（1個）」と書かれた組' },
+    { n: off2.length, q: 'つかない豆電球がちょうど2個になる', why: '「（2個）」と書かれた組' },
+  ].filter(c => c.n > 0);
+  const c = counts.length ? pick(counts) : { n: opts.length, q: 'つなげる', why: 'すべての組' };
+  subs.push({
+    key: 'boardset:' + b.batName + ':count:' + c.q, q: '(' + (subs.length + 1) + ') いま選べるつなぎ方のうち、' + c.q + 'のは何通りあるか。',
+    hint: '上で調べた結果を使って数える。',
+    unit: '通り', ans: c.n,
+    exp: '下の一覧で ' + c.why + ' を数える。',
+  });
+  return { setId: 'boardset', topic: '回路（連続した問題）', lead, svg, subs };
+}
+function boardExp(opts) {
+  return opts.map(o => '端子' + o.label + ' … つかないのは ' + (o.offCount ? o.off.join('・') + '（' + o.offCount + '個）' : 'なし')).join('\n');
+}
+
+// 連続小問を、1問ずつのキューに展開する
+function expandSet(set) {
+  return set.subs.map((sub, i) => ({
+    ...sub,
+    topic: set.topic,
+    setLead: set.lead, setSvg: set.svg, setTable: set.table,
+    setPos: (i + 1) + ' / ' + set.subs.length,
+    kindTag: set.setId,
+  }));
+}
+
+/* ============================================================
    出題キューを作る（診断の失点に比例して重みづけ＋単元を混ぜる）
    ① Rohrer et al.(2020): 問題を混ぜて練習すると正答率61% vs まとめて38%（d=0.83）
    ============================================================ */
@@ -1484,8 +1829,13 @@ function buildQueue(n) {
   // ミス帳: 期限が来たものを優先
   const cd = [...CARDS].sort((a, b) => (isDue(a.id) ? 0 : 1) - (isDue(b.id) ? 0 : 1) || Math.random() - .5);
   buckets.card = cd.slice(0, counts.card).map(makeCardQ);
-  buckets.lever = Array.from({ length: counts.lever }, genLever);
-  buckets.sol = Array.from({ length: counts.sol }, genSol);
+  // 連続小問を優先して入れる（筑駒の大問と同じ形）。枠が足りない分は1問完結でうめる。
+  buckets.lever = [];
+  while (buckets.lever.length + 4 <= counts.lever) buckets.lever.push(...expandSet(genLeverSet()));
+  while (buckets.lever.length < counts.lever) buckets.lever.push(genLever());
+  buckets.sol = [];
+  while (buckets.sol.length + 5 <= counts.sol) buckets.sol.push(...expandSet(genSolSet()));
+  while (buckets.sol.length < counts.sol) buckets.sol.push(genSol());
   buckets.circuit = genCircuitBatch(counts.circuit);
   // 同じ種類が連続しないように並べる
   const order = [];
@@ -1495,7 +1845,16 @@ function buildQueue(n) {
     avail.sort((a, b) => b.arr.length - a.arr.length);
     const last = order.length ? order[order.length - 1].kindTag : null;
     const choice = avail.find(p => p.k !== last) || avail[0];
-    const q = choice.arr.shift(); q.kindTag = choice.k; order.push(q);
+    const q = choice.arr.shift();
+    const isSet = !!q.setPos;
+    q.kindTag = isSet ? q.kindTag : choice.k;
+    order.push(q);
+    // 連続小問は、同じ設定のまま最後まで続ける（途中で別の分野に移らない）
+    if (isSet) {
+      while (choice.arr.length && choice.arr[0].setPos && choice.arr[0].setLead === q.setLead) {
+        const nx = choice.arr.shift(); order.push(nx);
+      }
+    }
   }
   return order;
 }
@@ -1506,10 +1865,29 @@ function makeSelectQ(s) {
     hint: '選択肢を1つずつ、他を見ずに○か×に決める。迷うものは？にして最後に戻る。',
   };
 }
+// ⛔ 68枚カードの原データには「抵抗」「電圧」「質量」など中学の用語が入っている（10枚）。
+//    原データは出典として残し、画面に出す文だけ中学受験の言い方に置き換える。
+const CARD_TERMS = [
+  ['すべて同じ一定の抵抗をもつものとする', 'すべて同じものとする'],
+  ['同じ一定の抵抗をもつ豆電球', '同じ豆電球'],
+  ['電池の電圧は変わらず、導線と閉じたスイッチの抵抗は考えない', '電池は同じものを使う。導線と閉じたスイッチには、電流の流れにくさがないものとする'],
+  ['電池の電圧は一定。導線の抵抗は考えない', '電池は同じものを使う。導線には電流の流れにくさがないものとする'],
+  ['質量百分率濃度', '濃さ（％）'],
+  ['同じ温度・圧力で比べる', '同じ温度・同じ条件で比べる'],
+  ['抵抗', '電流の流れにくさ'],
+  ['電圧', '電池の強さ'],
+  ['質量', '重さ'],
+];
+function toKidWords(t) {
+  if (!t) return t;
+  let out = String(t);
+  for (const [a, b] of CARD_TERMS) out = out.split(a).join(b);
+  return out;
+}
 function makeCardQ(c) {
   return {
-    key: c.id, topic: `ミス帳（${c.cat}）`, q: c.q, cond: c.cond, table: c.table, figSvg: c.fig,
-    recall: { answer: c.a, exp: c.exp, miss: c.miss },
+    key: c.id, topic: `ミス帳（${c.cat}）`, q: toKidWords(c.q), cond: toKidWords(c.cond), table: c.table, figSvg: c.fig,
+    recall: { answer: toKidWords(c.a), exp: toKidWords(c.exp), miss: toKidWords(c.miss) },
     hint: '口で答えてから、めくる。',
   };
 }
@@ -1686,11 +2064,11 @@ function viewHome(a) {
     el('h2', {}, '1つだけ練習する'),
     el('div', { class: 'grid g2 menu' },
       el('button', { class: 'btn-ghost', onclick: () => startPractice(8, 'lever') },
-        el('div', { class: 't' }, '⚖️ てこジム'), el('div', { class: 'd' }, 'つりあいの計算と、倒れる境目。毎回ちがう数で出ます')),
+        el('div', { class: 't' }, '⚖️ てこジム'), el('div', { class: 'd' }, '筑駒と同じ、設定が積み上がる4問セット。棒の重さを使う計算')),
       el('button', { class: 'btn-ghost', onclick: () => startPractice(8, 'circuit') },
-        el('div', { class: 't' }, '💡 回路ジム'), el('div', { class: 'd' }, 'つかない豆電球・明るさの順・端子のつなぎ方')),
+        el('div', { class: 't' }, '💡 回路ジム'), el('div', { class: 'd' }, '端子のつなぎ方を順に変えて、つき方の変化を追う')),
       el('button', { class: 'btn-ghost', onclick: () => startPractice(8, 'sol') },
-        el('div', { class: 't' }, '🧪 水溶液ジム'), el('div', { class: 'd' }, 'とける量の表を読んで計算。冷やす・とけ残り・必要な水')),
+        el('div', { class: 't' }, '🧪 水溶液ジム'), el('div', { class: 'd' }, '1つの表から5問続けて。とける量・とけ残り・冷やす・重さ・必要な水')),
       el('button', { class: 'btn-ghost', onclick: () => startPractice(8, 'select') },
         el('div', { class: 't' }, '✅ 全選択ジム'), el('div', { class: 'd' }, '「すべて選べ」専用。1つずつ○×をつける練習')),
       el('button', { class: 'btn-ghost', onclick: () => startPractice(10, 'card') },
@@ -1726,9 +2104,9 @@ function viewHome(a) {
 function startPractice(n, only) {
   let q;
   if (!only) q = buildQueue(n);
-  else if (only === 'lever') q = Array.from({ length: n }, genLever);
-  else if (only === 'circuit') q = genCircuitBatch(n);
-  else if (only === 'sol') q = Array.from({ length: n }, genSol);
+  else if (only === 'lever') { q = []; while (q.length + 4 <= n) q.push(...expandSet(genLeverSet())); while (q.length < n) q.push(genLever()); }
+  else if (only === 'circuit') { q = expandSet(genBoardSet()); while (q.length < n) q.push(genCircuit()); q = q.slice(0, n); }
+  else if (only === 'sol') { q = []; while (q.length + 5 <= n) q.push(...expandSet(genSolSet())); while (q.length < n) q.push(genSol()); }
   else if (only === 'select') q = shuffle([...SELECTALL].sort((a, b) => (isDue(a.id) ? 0 : 1) - (isDue(b.id) ? 0 : 1) || Math.random() - .5).slice(0, n)).map(makeSelectQ);
   else q = [...CARDS].sort((a, b) => (isDue(a.id) ? 0 : 1) - (isDue(b.id) ? 0 : 1) || Math.random() - .5).slice(0, n).map(makeCardQ);
   q.forEach(x => x.kindTag = x.kindTag || only || 'mix');
@@ -1744,6 +2122,11 @@ function viewPractice(a) {
     el('div', {}, el('span', { class: 'pill' }, `${S.i + 1} / ${S.q.length}`), el('span', { class: 'pill' }, q.topic),
       S.i > 0 ? el('span', { class: 'pill ' + (S.ok === S.i ? 'o' : '') }, `ここまで ${S.ok} / ${S.i} 正解`) : null),
     el('div', { class: 'bar' }, el('i', { style: `width:${S.i / S.q.length * 100}%` })),
+    q.setLead ? el('div', { class: 'lead' },
+      el('div', { class: 'leadhd' }, '問題の設定（この大問ぜんぶに共通）'),
+      el('div', {}, q.setLead)) : null,
+    q.setSvg ? el('div', { class: 'svgbox' , html: q.setSvg }) : null,
+    q.setTable ? tableEl(q.setTable) : null,
     el('div', { class: 'qbox' }, q.q),
     q.cond ? el('div', { class: 'cond' }, q.cond) : null,
     q.svg ? el('div', { class: 'svgbox', html: q.svg }) : null,
@@ -1764,6 +2147,9 @@ function tableEl(t) {
 
 /* ---- すべて選べ: 1つずつ○×△を付けないと採点できない（ここが訓練の本体） ---- */
 function renderSelectAll(area, q) {
+  // ⛔ ここにヒントが無く、回路の考え方が子どもに一度も届いていなかった
+  if (q.hint) area.append(el('details', { class: 'hint', style: 'margin-bottom:12px' },
+    el('summary', {}, 'ヒントを見る'), el('div', { style: 'margin-top:8px' }, q.hint)));
   const judged = new Array(q.selectAll.opts.length).fill(null);
   const rows = [];
   q.selectAll.opts.forEach((o, i) => {
@@ -1900,7 +2286,7 @@ function practiceDone(a) {
       el('div', { class: 'ic' }, '✅'), el('div', {}, el('div', { style: 'font-weight:700' }, best[0] + ' は全問正解'), el('div', { class: 'tiny' }, 'ここはもう大丈夫です。'))));
     if (worst[1].ok < worst[1].n) card.append(el('div', { class: 'watch' },
       el('div', { class: 'ic' }, '⚠️'), el('div', {}, el('div', { style: 'font-weight:700' }, '次に気をつけるのは ' + worst[0]),
-        el('div', { class: 'tiny' }, 'まちがえた問題は3日後にまた出ます。そのとき解ければ、身についた合図です。'))));
+        el('div', { class: 'tiny' }, 'まちがえた問題は、またすぐに出ます。そのとき解ければ、身についた合図です。'))));
   }
   a.append(card);
 
@@ -1908,8 +2294,9 @@ function practiceDone(a) {
   const wrong = S.done.filter(d => !d.ok);
   if (wrong.length) {
     const wc = el('div', { class: 'card' }, el('h2', {}, 'まちがえたもの（' + wrong.length + '件）'),
-      el('p', { class: 'tiny' }, '3日後にもう一度出ます。解けたら7日後、14日後と間があいていきます。'));
-    wrong.forEach(w => wc.append(el('div', { class: 'kv' }, el('span', {}, w.topic), el('span', { class: 'pill n' }, '3日後に再出題'))));
+      el('p', { class: 'tiny' }, 'すべて選べ・ミス帳のまちがいは3日後にもう一度出ます（解けたら7日後、14日後と間があきます）。'
+        + 'てこ・回路・水溶液は毎回ちがう数で作るので、同じ型がまた出ます。'));
+    wrong.forEach(w => wc.append(el('div', { class: 'kv' }, el('span', {}, w.topic), el('span', { class: 'pill n' }, 'また出ます'))));
     a.append(wc);
   }
 
@@ -2093,6 +2480,9 @@ function labelOf(k) {
     'sol:water': '水溶液（必要な水の量）',
     'sol:satw': '水溶液（水よう液の重さ）',
   };
+  if (k.startsWith('leverset:')) return 'てこ（連続した問題の(' + k.split(':')[1] + ')）';
+  if (k.startsWith('solset:')) return '水溶液（連続した問題の(' + k.split(':')[1] + ')）';
+  if (k.startsWith('boardset:')) return '回路（連続した問題）';
   if (k.startsWith('lever:')) return LEVER[k] || 'てこ';
   if (k.startsWith('sol:')) return SOL[k] || '水溶液';
   if (k.startsWith('circ:board')) return '回路（端子に導線をつなぐ）';
