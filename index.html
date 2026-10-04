@@ -106,6 +106,48 @@ svg .batt path{stroke:#16293a}
 .hint>div{padding:0 14px 12px}
 textarea{width:100%;font:inherit;font-size:13px;border:1px solid var(--line);border-radius:12px;padding:10px;min-height:120px}
 @media (max-width:520px){ .grid.g3{grid-template-columns:1fr 1fr} .timer{font-size:56px} }
+
+/* ---- 今日の状態 ---- */
+.hero{background:linear-gradient(135deg,#0f6fa8,#0a5580);color:#fff;border:0}
+.hero h2{color:#fff}
+.hero .big{font-size:40px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
+.hero .sub{opacity:.9;font-size:14px}
+.hero .row{display:flex;gap:18px;align-items:flex-end;flex-wrap:wrap;margin:6px 0 2px}
+.hero .bar{background:rgba(255,255,255,.25)}
+.hero .bar>i{background:#ffd34d}
+.chip{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.18);
+  border-radius:999px;padding:5px 12px;font-size:13px;font-weight:700;margin:4px 6px 0 0}
+/* ---- 分野ごとの出来ぐあい ---- */
+.skill{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.skill:last-child{border-bottom:0}
+.skill .nm{width:7.5em;flex-shrink:0;font-size:14px;font-weight:700}
+.skill .tr{flex:1;height:14px;background:#eef3f7;border-radius:999px;overflow:hidden;position:relative}
+.skill .tr>i{display:block;height:100%;border-radius:999px;transition:width .5s}
+.skill .vl{width:5.2em;text-align:right;font-size:13px;font-variant-numeric:tabular-nums;color:var(--sub)}
+.lv-0 .tr>i{background:#d9e2ea}
+.lv-1 .tr>i{background:#e8a33d}
+.lv-2 .tr>i{background:#5aa9d6}
+.lv-3 .tr>i{background:#2f9e5e}
+/* ---- 注意すること ---- */
+.watch{display:flex;gap:10px;background:var(--warnbg);border:1px solid #f0dcb4;
+  border-radius:12px;padding:12px 14px;margin:8px 0;font-size:15px;line-height:1.7}
+.watch .ic{font-size:20px;flex-shrink:0}
+.good{background:var(--okbg);border-color:#bfe3cd}
+/* ---- ほめる表示 ---- */
+.praise{text-align:center;padding:10px 0 2px}
+.praise .em{font-size:46px;line-height:1}
+.praise .tx{font-weight:800;font-size:19px;margin-top:4px}
+.praise .sb{color:var(--sub);font-size:14px;margin-top:2px}
+.ring{display:flex;gap:6px;justify-content:center;margin:10px 0 2px;flex-wrap:wrap}
+.ring span{width:13px;height:13px;border-radius:50%;background:#e2e9ef}
+.ring span.o{background:var(--ok)}
+.ring span.x{background:var(--ng)}
+.ring span.n{background:#cfd9e2}
+/* ---- 連続記録 ---- */
+.streakbox{display:flex;align-items:center;gap:12px;background:#fff8e6;border:1px solid #f3e1b0;
+  border-radius:12px;padding:12px 14px;font-size:15px}
+.streakbox .n{font-size:30px;font-weight:800;color:#b07500;line-height:1}
+
 </style>
 </head>
 <body>
@@ -128,8 +170,11 @@ const CARDS = [{"id":"T01a","theme":"種子の栄養はどこにある？","cat"
 <script>
 /* ==== selectall.js ==== */
 // 全選択ジム（すべて選べ）の問題。
-// ⛔ 内容は「筑駒理科_迷いやすい知識チェック表.pdf」と 68枚カードに書かれていることだけを使う。
-// 新しい事実を作っていない。出典を各問に書いてある。
+// 出典は次の3つだけ。各問の src に書いてある。
+//   1. 筑駒理科_迷いやすい知識チェック表.pdf（本人の手持ち資料）
+//   2. 68枚カード（rika-cards-68-questions.json）
+//   3. input/search/2026-10-04_07_天体の一次情報.md（国立天文台などで裏を取ったもの）
+// ⛔ 上の3つに無いことを、記憶で書き足さない。
 // ans は「正しいもの（○にすべきもの）」の番号。それ以外は ×。
 
 const SELECTALL = [
@@ -186,7 +231,7 @@ const SELECTALL = [
   {
     id: 'SA08', cat: '化学', src: 'チェック表 化学「金属に共通する性質」',
     q: '次のうち、すべての金属に共通する性質をすべて選べ。',
-    opts: ['みがくと光る（光沢がある）', '磁石につく', '電気を通す', '水に沈む', '熱を通す', 'たたくとうすく広がる（展性）', '引っぱるとのびる（延性）', '固い'],
+    opts: ['みがくと光る（光沢がある）', '磁石につく', '電気を通す', '水に沈む', '熱を通す', 'たたくとうすく広がる（展性）', '引っぱると細長くのびる（延性）', '固い'],
     ans: [0, 2, 4, 5, 6],
     exp: '共通するのは 光沢・電気と熱を通す・展性と延性。磁石につく、水に沈む、固いは共通ではない。',
   },
@@ -231,6 +276,142 @@ const SELECTALL = [
     opts: ['コイルの巻き数を増やす', '電池の向きを反対にする', '流す電流を大きくする', '鉄しんを入れる'],
     ans: [0, 2, 3],
     exp: '電磁石を強くする：巻き数・電流・鉄しん。電池の向きを反対にすると極が入れかわるだけで、強さは変わらない。',
+  },
+
+  // ---------- 天体（チェック表「天体」の11項目が出典。筑駒は地学の大問に毎年天体を混ぜてくる）----------
+  {
+    id: 'SA18', cat: '天体', src: 'チェック表 天体「北の空と南の空」「東の空と西の空」',
+    q: '夜空の星の動きについて、正しいものをすべて選べ。',
+    opts: [
+      '北の空の星は、北極星を中心に反時計回りに回って見える',
+      '北の空の星は、北極星を中心に時計回りに回って見える',
+      '南の空の星は、東から西（左から右）へ動いて見える',
+      '南の空の星は、西から東（右から左）へ動いて見える',
+      '東の空の星は、右上へのぼっていくように見える',
+      '西の空の星は、右下へしずんでいくように見える',
+    ],
+    ans: [0, 2, 4, 5],
+    exp: '北の空は北極星を中心に反時計回り。南の空は東→西（左→右）。東の空は右上へのぼり、西の空は右下へしずむ。',
+  },
+  {
+    id: 'SA19', cat: '天体', src: 'チェック表 天体「1時間と1か月」「1か月後、同じ位置に見える時刻」',
+    q: '星の動きの角度と時刻について、正しいものをすべて選べ。',
+    opts: [
+      '星は1時間に約15度動いて見える',
+      '星は1時間に約30度動いて見える',
+      '同じ時刻に見ると、星の位置は1か月で約30度動く',
+      '同じ時刻に見ると、星の位置は1か月で約15度動く',
+      '1か月後に同じ位置に見えるのは、2時間早い時刻である',
+      '1か月後に同じ位置に見えるのは、2時間おそい時刻である',
+    ],
+    ans: [0, 2, 4],
+    exp: '1時間に15度（360÷24）。1か月に30度（360÷12）。30度÷15度＝2 なので、1か月後は2時間早い時刻に同じ位置に見える。',
+  },
+  {
+    id: 'SA20', cat: '天体', src: 'チェック表 天体「上弦と下弦」',
+    q: '月について、正しいものをすべて選べ。',
+    opts: [
+      '上弦の月は、右半分が光って見える',
+      '上弦の月は、左半分が光って見える',
+      '上弦の月が南中するのは夕方ごろである',
+      '上弦の月が南中するのは明け方ごろである',
+      '下弦の月は、左半分が光って見える',
+      '下弦の月が南中するのは明け方ごろである',
+    ],
+    ans: [0, 2, 4, 5],
+    exp: '上弦は右半分が光り、夕方に南中。下弦は左半分が光り、明け方に南中。',
+  },
+  {
+    id: 'SA21', cat: '天体', src: 'チェック表 天体「南中高度（北緯35度）」「季節で太陽の道が変わる理由」',
+    q: '北緯35度の地点で太陽の南中高度を調べた。正しいものをすべて選べ。',
+    opts: [
+      '春分・秋分の南中高度は 55 度である',
+      '夏至の南中高度がいちばん高い',
+      '冬至の南中高度がいちばん高い',
+      '夏至の南中高度は、春分・秋分より約23.4度高い',
+      '季節で太陽の通り道が変わるのは、地軸がかたむいたまま公転しているからである',
+      '季節で太陽の通り道が変わるのは、地球が自転しているからである',
+    ],
+    ans: [0, 1, 3, 4],
+    exp: '春分・秋分は 90−35＝55度。夏至は ＋23.4 で 78.4度、冬至は −23.4 で 31.6度。夏至がいちばん高い。'
+      + '季節が変わるのは、地軸がかたむいたまま公転しているから。自転は昼と夜の理由。',
+  },
+  {
+    id: 'SA22', cat: '天体', src: 'チェック表 天体「北極星が動かない理由」「時差」「星座早見の東西」',
+    q: '次のうち、正しいものをすべて選べ。',
+    opts: [
+      '北極星がほとんど動かずに見えるのは、地球の地軸をのばした方向にあるからである',
+      '北極星がほとんど動かずに見えるのは、地球から最も遠い星だからである',
+      '経度が15度ちがうと、時刻は1時間ちがう',
+      '東にある地点のほうが、時刻は進んでいる',
+      '西にある地点のほうが、時刻は進んでいる',
+      '星座早見ばんは、東と西が地図と逆に書いてある',
+    ],
+    ans: [0, 2, 3, 5],
+    exp: '北極星は地軸をのばした方向にあるので動かずに見える（遠さは理由ではない）。経度15度で1時間、東ほど時刻が進んでいる。'
+      + '星座早見ばんは空にかざして使うので、東西が逆に書いてある。',
+  },
+
+  {
+    id: 'SA23', cat: '天体', src: '天体の一次情報（夏の大三角・さそり座）／筑駒2023年度 大問2で夏の星座が出題',
+    q: '夏の空に見える星について、正しいものをすべて選べ。',
+    opts: [
+      '夏の大三角は、ベガ・アルタイル・デネブの3つの星でできている',
+      'ベガはこと座の星である',
+      'アルタイルはわし座の星である',
+      'デネブはおおいぬ座の星である',
+      'さそり座のアンタレスは赤い色の星である',
+      'オリオン座は夏の代表的な星座である',
+    ],
+    ans: [0, 1, 2, 4],
+    exp: '夏の大三角は、こと座のベガ・わし座のアルタイル・はくちょう座のデネブ。デネブはおおいぬ座ではなく、はくちょう座。\n'
+      + 'さそり座のアンタレスは赤い星。オリオン座は冬の星座。',
+  },
+  {
+    id: 'SA24', cat: '天体', src: '天体の一次情報（冬の大三角・オリオン座）／筑駒2020年度 大問3で冬の大三角が出題',
+    q: '冬の空に見える星について、正しいものをすべて選べ。',
+    opts: [
+      '冬の大三角は、ベテルギウス・シリウス・プロキオンの3つの星でできている',
+      'ベテルギウスはオリオン座の星である',
+      'シリウスはおおいぬ座の星である',
+      'プロキオンはこいぬ座の星である',
+      'オリオン座のリゲルは青白い色の星である',
+      'ベテルギウスは青白い色の星である',
+    ],
+    ans: [0, 1, 2, 3, 4],
+    exp: '冬の大三角は、オリオン座のベテルギウス・おおいぬ座のシリウス・こいぬ座のプロキオン。\n'
+      + 'オリオン座の1等星は2つ。ベテルギウスは赤色、リゲルは青白色。星は赤いほど温度が低く、青白いほど温度が高い。',
+  },
+  {
+    id: 'SA25', cat: '天体', src: '天体の一次情報（北極星の探し方）／筑駒2021年度 大問2で北斗七星とカシオペヤ座が出題',
+    q: '北極星の探し方について、正しいものをすべて選べ。',
+    opts: [
+      '北斗七星のひしゃくの先の2つの星を結び、その間を約5倍のばすと北極星が見つかる',
+      '北斗七星のひしゃくの持ち手の方へのばすと北極星が見つかる',
+      'カシオペヤ座のW字を使っても北極星を見つけられる',
+      '北斗七星とカシオペヤ座は、北極星をはさんでほぼ反対側にある',
+      '北斗七星とカシオペヤ座は、空の同じ側にならんで見える',
+    ],
+    ans: [0, 2, 3],
+    exp: '北斗七星はひしゃくの先の2星を結び、その間を約5倍のばす（持ち手の方ではない）。\n'
+      + 'カシオペヤ座のW字からも約5倍のばして見つけられる。この2つは北極星をはさんで反対側にあるので、'
+      + 'どちらかが低いときはもう一方が高い位置にある。',
+  },
+  {
+    id: 'SA26', cat: '天体', src: '天体の一次情報（月の出・南中・月の入り）／筑駒2023年度 大問2で朝6時に見える月が出題',
+    q: '月の見える時刻について、正しいものをすべて選べ。',
+    opts: [
+      '満月が南中するのは真夜中ごろである',
+      '満月は夕方に東からのぼる',
+      '下弦の月が南中するのは明け方ごろである',
+      '下弦の月は、真夜中ごろに東からのぼる',
+      '上弦の月は、明け方に東からのぼる',
+      '月の満ち欠けの周期は約29.5日である',
+    ],
+    ans: [0, 1, 2, 3, 5],
+    exp: '満月は 夕方に出て・真夜中に南中・朝にしずむ。下弦は 真夜中に出て・明け方に南中・昼にしずむ。\n'
+      + '上弦は 昼に出て・夕方に南中・夜にしずむ（明け方ではない）。周期は約29.5日。\n'
+      + '出る時刻は「南中の約6時間前」と覚えると、朝6時や夕方6時に何が見えるかを出せる。',
   },
 
   // ---------- 実験考察型（筑駒の「実験結果から分かること」の形） ----------
@@ -917,7 +1098,7 @@ function genLever() {
         return {
           key: 'lever:bal-w', kind, topic: 'てこ（つりあいの計算）',
           q: '重さを考えなくてよい棒を、糸で1点つるした。つるした点から左へ ' + d1 + 'cm のところに ' + w1 + 'g のおもりを下げた。つるした点から右へ ' + d2 + 'cm のところに何 g のおもりを下げると、棒は水平につりあうか。',
-          hint: '（おもりの重さ）×（つるした点からのきょり）が、左と右で等しくなるとつりあう。',
+          hint: '（おもりの重さ）×（つるした点からのきょり）を、左と右で計算する。この2つが等しいとき、棒はつりあう。',
           unit: 'g', ans: w2,
           exp: '左側: ' + w1 + '×' + d1 + '＝' + (w1 * d1) + '。\n右側も ' + (w1 * d1) + ' になればつりあう。\n□×' + d2 + '＝' + (w1 * d1) + ' より □＝' + w2 + 'g。',
           svg: svgBalance(d1, w1, d2, '？g'),
@@ -926,7 +1107,7 @@ function genLever() {
         return {
           key: 'lever:bal-d', kind, topic: 'てこ（つりあいの計算）',
           q: '重さを考えなくてよい棒を、糸で1点つるした。つるした点から左へ ' + d1 + 'cm のところに ' + w1 + 'g のおもりを下げた。' + w2 + 'g のおもりを右側のどこに下げると、棒は水平につりあうか。つるした点からのきょりを答えよ。',
-          hint: '（おもりの重さ）×（つるした点からのきょり）が、左と右で等しくなるとつりあう。',
+          hint: '（おもりの重さ）×（つるした点からのきょり）を、左と右で計算する。この2つが等しいとき、棒はつりあう。',
           unit: 'cm', ans: d2,
           exp: '左側: ' + w1 + '×' + d1 + '＝' + (w1 * d1) + '。\n' + w2 + '×□＝' + (w1 * d1) + ' より □＝' + d2 + 'cm。',
           svg: svgBalance(d1, w1, null, w2 + 'g'),
@@ -966,7 +1147,7 @@ function genLever() {
       return {
         key: 'lever:tipYN', kind, topic: 'てこ（倒れるか）',
         q: '長さ ' + L + 'cm・重さ ' + W + 'g の太さが同じ棒を台にのせた。台の右はしは棒の左はしから ' + p + 'cm。' + w + 'g のおもりを、棒の左はしから ' + put + 'cm のところにのせた。棒は倒れるか。',
-        hint: 'まず境目を計算してから、のせたところがそれより右か左かを見る。',
+        hint: 'まず境目が何cmかを計算する。そのあと、おもりを置いた位置が境目より右か左かを見る。',
         choice: ['倒れる', '倒れない'], ans: falls ? '倒れる' : '倒れない',
         exp: '棒の重心は左はしから ' + (L / 2) + 'cm、支点は ' + p + 'cm なので、重心は支点より ' + a + 'cm 左。\n'
           + '境目は ' + p + '＋' + W + '×' + a + '÷' + w + '＝' + r.x + 'cm。のせたのは ' + put + 'cm なので、境目より' + (falls ? '右。よって倒れる' : '左。よって倒れない') + '。',
@@ -1165,7 +1346,7 @@ function genCircuit() {
   if (kind === 'off') return {
     ...common, key: `circ:${c.id}:${JSON.stringify(st)}:off`,
     q: 'ついていない豆電球をすべて選べ。',
-    hint: '① 開いたスイッチがある道には、電流が流れない。② 導線（または閉じたスイッチ）だけでつながっている道があると、そこに並んだ豆電球には電流が流れない。',
+    hint: 'ふたつの見かたがある。ひとつは、開いたスイッチがある道には電流が流れないこと。もうひとつは、導線（または閉じたスイッチ）だけでつながった近道があると、そちらに電流が流れて、遠回りの豆電球はつかないこと。',
     selectAll: { opts: ids, ans: off.map(i => ids.indexOf(i)) },
     exp: expCircuit(ids, r),
   };
@@ -1334,6 +1515,91 @@ function makeCardQ(c) {
 }
 
 /* ============================================================
+   今日の状態をまとめる
+   ============================================================ */
+// 本番までの日数。② 例年どおり2027年2月3日とした場合。
+const EXAM_DATE = '2027-02-03';
+function daysLeft() {
+  const t = new Date(today() + 'T00:00:00'), e = new Date(EXAM_DATE + 'T00:00:00');
+  return Math.max(0, Math.round((e - t) / 86400000));
+}
+// 分野ごとの出来ぐあい。記録から「直近の正答率」と「やった数」を出す。
+const AREAS = [
+  { key: 'lever', nm: 'てこ', pre: ['lever:'], goal: 20 },
+  { key: 'circuit', nm: '回路', pre: ['circ:'], goal: 20 },
+  { key: 'sol', nm: '水溶液', pre: ['sol:'], goal: 16 },
+  { key: 'select', nm: 'すべて選べ', pre: ['SA'], goal: 26 },
+  { key: 'card', nm: 'ミス帳', pre: ['T', 'N', 'S', 'E', 'M', 'C', 'B', 'G'], goal: 68 },
+];
+function areaStats() {
+  return AREAS.map(a => {
+    let seen = 0, ok = 0, items = 0;
+    for (const [k, v] of Object.entries(DB.items)) {
+      const hit = a.key === 'select' ? /^SA\d/.test(k)
+        : a.key === 'card' ? (CARDS.some(c => c.id === k))
+          : a.pre.some(p => k.startsWith(p));
+      if (!hit) continue;
+      seen += v.seen; ok += v.ok; items++;
+    }
+    const rate = seen ? ok / seen : null;
+    const lv = rate == null ? 0 : rate >= 0.8 ? 3 : rate >= 0.6 ? 2 : 1;
+    return { ...a, seen, ok, items, rate, lv };
+  });
+}
+// 次に気をつけること。記録から作る。無ければ出さない。
+function watchPoints() {
+  const out = [];
+  const st = areaStats();
+  // (1) まだ手をつけていない分野
+  const untouched = st.filter(a => a.seen === 0);
+  if (untouched.length && untouched.length < st.length) {
+    out.push({ ic: '🆕', t: 'まだ手をつけていない分野', b: untouched.map(a => a.nm).join('・') + ' を1回ためしてみよう。', kind: 'watch' });
+  }
+  // (2) 正答率がいちばん低い分野
+  const done2 = st.filter(a => a.seen >= 4).sort((x, y) => x.rate - y.rate);
+  if (done2.length && done2[0].rate < 0.6) {
+    out.push({
+      ic: '⚠️', kind: 'watch', t: done2[0].nm + 'が ' + Math.round(done2[0].rate * 100) + '%',
+      b: 'いま、いちばん点が取れていないところ。1日3問でも続けると、伸びしろが大きい。'
+    });
+  }
+  // (3) 2回以上まちがえたもの
+  const weak = Object.entries(DB.items).filter(([, v]) => v.ng >= 2).map(([k]) => labelOf(k));
+  if (weak.length) {
+    out.push({ ic: '🔁', kind: 'watch', t: '2回以上まちがえたもの ' + weak.length + '件', b: weak.slice(0, 3).join(' / ') + (weak.length > 3 ? ' ほか' : '') });
+  }
+  // (5) 過去問の平均が目標に届いているか
+  if (DB.exams.length) {
+    const sc = DB.exams.map(e => e.score);
+    const avg = sc.reduce((a, b) => a + b, 0) / sc.length;
+    const last3 = sc.slice(-3);
+    const avg3 = last3.reduce((a, b) => a + b, 0) / last3.length;
+    out.push({
+      ic: avg3 >= DB.goal ? '🎯' : '📈', kind: avg3 >= DB.goal ? 'good' : 'watch',
+      t: '筑駒の過去問 直近' + last3.length + '回の平均 ' + avg3.toFixed(0) + '点',
+      b: avg3 >= DB.goal ? '目標の ' + DB.goal + '点をこえています。この調子。'
+        : '目標の ' + DB.goal + '点まで あと ' + Math.ceil(DB.goal - avg3) + '点。'
+    });
+    // 無答の注意
+    const blanks = DB.exams.slice(-3).reduce((a, e) => a + (e.blank || 0), 0);
+    if (blanks > 0) out.push({ ic: '✍️', kind: 'watch', t: '手がつかなかった大問 直近3回で ' + blanks + '個', b: '記号はかならず何か書くこと。空らんは0点だが、書けば当たることがある。' });
+  }
+  // (6) よくできているところ（ほめる）
+  const best = st.filter(a => a.seen >= 4 && a.rate >= 0.8).sort((x, y) => y.rate - x.rate);
+  if (best.length) out.push({ ic: '✅', kind: 'good', t: best[0].nm + 'が ' + Math.round(best[0].rate * 100) + '%', b: 'ここはよく取れています。今のままで大丈夫。' });
+  return out;
+}
+// ほめる言葉。正答率で変える。
+function praiseFor(ok, n) {
+  const r = n ? ok / n : 0;
+  if (r === 1) return { em: '🏆', tx: '全問正解', sb: 'この調子で続けよう' };
+  if (r >= 0.8) return { em: '🎉', tx: 'よくできた', sb: 'あと少しで全問正解だった' };
+  if (r >= 0.6) return { em: '👍', tx: 'いい調子', sb: 'まちがえたところが、伸びるところ' };
+  if (r >= 0.3) return { em: '💪', tx: 'おつかれさま', sb: 'まちがえた分だけ、本番で取れる' };
+  return { em: '🌱', tx: 'ここが伸びしろ', sb: '今日わかれば、本番で取れる' };
+}
+
+/* ============================================================
    画面
    ============================================================ */
 let VIEW = 'home', SESSION = null;
@@ -1349,49 +1615,111 @@ function render() {
 $('#back').onclick = () => { if (SESSION && SESSION.i < SESSION.q.length && SESSION.i > 0 && !confirm('練習をやめますか。ここまでの記録は残ります。')) return; SESSION = null; VIEW = 'home'; $('#title').textContent = '筑駒理科ジム'; render(); };
 
 function viewHome(a) {
-  const due = SELECTALL.filter(s => isDue(s.id)).length + CARDS.filter(c => isDue(c.id)).length;
   const t = DB.log.filter(x => x.d === today()).reduce((s, x) => s + x.n, 0);
+  const tok = DB.log.filter(x => x.d === today()).reduce((s, x) => s + x.ok, 0);
+  const sd = streakDays();
+  const dl = daysLeft();
+  const GOAL_TODAY = 12;
+
+  // ---- 今日の状態（上に大きく）----
+  const hero = el('div', { class: 'card hero' },
+    el('h2', {}, '今日の記録'),
+    el('div', { class: 'row' },
+      el('div', {}, el('div', { class: 'big' }, String(t)), el('div', { class: 'sub' }, '問 解いた')),
+      el('div', {}, el('div', { class: 'big' }, t ? Math.round(tok / t * 100) + '%' : '—'), el('div', { class: 'sub' }, '正解した')),
+      el('div', {}, el('div', { class: 'big' }, String(dl)), el('div', { class: 'sub' }, '日後が本番')),
+    ),
+    el('div', { class: 'bar' }, el('i', { style: 'width:' + Math.min(100, t / GOAL_TODAY * 100) + '%' })),
+    el('div', { class: 'sub' }, t >= GOAL_TODAY ? '今日の分は終わり。おつかれさま。' : '今日の目安は ' + GOAL_TODAY + '問。あと ' + (GOAL_TODAY - t) + '問。'),
+    el('div', {},
+      sd ? el('span', { class: 'chip' }, '🔥 ' + sd + '日 続いている') : null,
+  
+      DB.exams.length ? el('span', { class: 'chip' }, '📝 過去問 ' + DB.exams.length + '回') : null,
+    ),
+  );
+  a.append(hero);
+
+  // ---- はじめる ----
   a.append(el('div', { class: 'card' },
     el('h2', {}, '今日の練習'),
-    el('p', { class: 'muted' }, `今日やった問題 ${t} 問　／　復習の期限が来ているもの ${due} 件`),
-    el('div', { class: 'grid g3', style: 'margin-top:12px' },
-      ...[[6, '5分'], [12, '10分'], [24, '20分']].map(([n, lab]) =>
-        el('button', { class: 'btn-ghost menu', onclick: () => startPractice(n) },
-          el('div', { class: 't' }, lab), el('div', { class: 'd' }, `${n}問`)))),
+    el('div', { class: 'grid g3', style: 'margin-top:4px' },
+      ...[[6, '5分', '6問'], [12, '10分', '12問'], [24, '20分', '24問']].map(([n, lab, sub]) =>
+        el('button', { class: n === 12 ? 'btn-primary' : 'btn-ghost menu', style: n === 12 ? 'display:flex;flex-direction:column;gap:2px' : '', onclick: () => startPractice(n) },
+          el('div', { class: 't', style: 'font-size:17px' }, lab), el('div', { class: 'd', style: n === 12 ? 'color:#dbeaf5' : '' }, sub)))),
     el('p', { class: 'tiny', style: 'margin-top:12px' },
-      'てこ・回路・水溶液・すべて選べ・ミス帳を混ぜて出します。① 問題を混ぜて練習すると、まとめて練習するより成績が上がります（Rohrer et al. 2020、中1を対象にした無作為化比較試験で 61% 対 38%）。')
+      'てこ・回路・水溶液・すべて選べ・ミス帳を混ぜて出します。まちがえた問題は3日後にまた出ます。'),
   ));
+
+  // ---- 分野ごとの出来ぐあい ----
+  const stats = areaStats();
+  const anyDone = stats.some(x => x.seen > 0);
+  const skillCard = el('div', { class: 'card' }, el('h2', {}, '分野ごとの正解率'));
+  if (!anyDone) {
+    skillCard.append(el('p', { class: 'muted' }, 'まだ練習の記録がありません。1回やると、ここに正解率が出ます。'));
+  } else {
+    for (const x of stats) {
+      skillCard.append(el('div', { class: 'skill lv-' + x.lv },
+        el('div', { class: 'nm' }, x.nm),
+        el('div', { class: 'tr' }, el('i', { style: 'width:' + (x.rate == null ? 0 : Math.round(x.rate * 100)) + '%' })),
+        el('div', { class: 'vl' }, x.seen ? Math.round(x.rate * 100) + '%' : '未着手'),
+      ));
+    }
+    skillCard.append(el('p', { class: 'tiny', style: 'margin-top:10px' },
+      '緑は8割以上、青は6割以上、オレンジは6割未満。オレンジのところが、いちばん点の伸びるところ。'));
+  }
+  a.append(skillCard);
+
+  // ---- 次に気をつけること ----
+  const wp = watchPoints();
+  if (wp.length) {
+    const wc = el('div', { class: 'card' }, el('h2', {}, '次に気をつけること'));
+    for (const w of wp) {
+      wc.append(el('div', { class: 'watch' + (w.kind === 'good' ? ' good' : '') },
+        el('div', { class: 'ic' }, w.ic),
+        el('div', {}, el('div', { style: 'font-weight:700' }, w.t), el('div', { class: 'tiny' }, w.b))));
+    }
+    a.append(wc);
+  }
+
+  // ---- 1つだけ練習する ----
   a.append(el('div', { class: 'card' },
     el('h2', {}, '1つだけ練習する'),
     el('div', { class: 'grid g2 menu' },
       el('button', { class: 'btn-ghost', onclick: () => startPractice(8, 'lever') },
-        el('div', { class: 't' }, 'てこジム'), el('div', { class: 'd' }, 'つりあいの計算と、倒れる境目。毎回ちがう数で出ます')),
+        el('div', { class: 't' }, '⚖️ てこジム'), el('div', { class: 'd' }, 'つりあいの計算と、倒れる境目。毎回ちがう数で出ます')),
       el('button', { class: 'btn-ghost', onclick: () => startPractice(8, 'circuit') },
-        el('div', { class: 't' }, '回路ジム'), el('div', { class: 'd' }, 'つかない豆電球・明るさの順・端子のつなぎ方。配線とスイッチで変わります')),
+        el('div', { class: 't' }, '💡 回路ジム'), el('div', { class: 'd' }, 'つかない豆電球・明るさの順・端子のつなぎ方')),
       el('button', { class: 'btn-ghost', onclick: () => startPractice(8, 'sol') },
-        el('div', { class: 't' }, '水溶液ジム'), el('div', { class: 'd' }, 'とける量の表を読んで計算。冷やす・とけ残り・必要な水')),
+        el('div', { class: 't' }, '🧪 水溶液ジム'), el('div', { class: 'd' }, 'とける量の表を読んで計算。冷やす・とけ残り・必要な水')),
       el('button', { class: 'btn-ghost', onclick: () => startPractice(8, 'select') },
-        el('div', { class: 't' }, '全選択ジム'), el('div', { class: 'd' }, '「すべて選べ」専用。1つずつ○×をつける練習')),
+        el('div', { class: 't' }, '✅ 全選択ジム'), el('div', { class: 'd' }, '「すべて選べ」専用。1つずつ○×をつける練習')),
       el('button', { class: 'btn-ghost', onclick: () => startPractice(10, 'card') },
-        el('div', { class: 't' }, 'ミス帳'), el('div', { class: 'd' }, '68枚のカード。口で答えてからめくります')),
+        el('div', { class: 't' }, '📖 ミス帳'), el('div', { class: 'd' }, '68枚のカード。口で答えてからめくります')),
     )));
+
+  // ---- 本番の練習 ----
   a.append(el('div', { class: 'card' },
     el('h2', {}, '本番の練習'),
     el('div', { class: 'grid g2 menu' },
       el('button', { class: 'btn-ghost', onclick: () => { VIEW = 'exam'; $('#title').textContent = '40分タイマー'; render(); } },
-        el('div', { class: 't' }, '40分タイマー'), el('div', { class: 'd' }, '過去問を解くときに使う。1大問6分で切る合図と、無答の確認')),
+        el('div', { class: 't', style: 'white-space:nowrap' }, '⏱ 40分タイマー'), el('div', { class: 'd' }, '過去問を解くときに使います。1大問6分の合図と、手がつかなかった大問の確認')),
       el('button', { class: 'btn-ghost', onclick: () => { VIEW = 'record'; $('#title').textContent = '記録'; render(); } },
-        el('div', { class: 't' }, '記録'), el('div', { class: 'd' }, '練習の履歴・苦手の一覧・過去問の点数')),
+        el('div', { class: 't' }, '📊 記録'), el('div', { class: 'd' }, '練習の記録・まちがえた問題・過去問の点数')),
     )));
+
+  // ---- なぜこの4つなのか ----
   a.append(el('div', { class: 'card' },
-    el('h2', {}, 'このアプリが訓練するもの'),
-    el('p', { class: 'tiny' }, '筑駒の過去問8年分（2019〜2026）に実際に出た回数と、模試3回で落とした点数に合わせてある。'),
-    el('table', {}, el('tbody', { html:
-      '<tr><th>てこ・てんびんの計算</th><td>8年中8年</td><td>てこジム</td></tr>'
-      + '<tr><th>回路・端子のつなぎ方</th><td>8年中7年</td><td>回路ジム</td></tr>'
-      + '<tr><th>とける量の計算</th><td>8年中3年</td><td>水溶液ジム</td></tr>'
-      + '<tr><th>すべて選べ・実験の読み取り</th><td>毎年</td><td>全選択ジム</td></tr>' })),
-    el('p', { class: 'tiny' }, '地学は入れていない。模試でも過去問でも8割とれていて、のびしろが小さいため。')
+    el('h2', {}, 'なぜこの練習なのか'),
+    el('p', { class: 'tiny' }, '筑駒の過去問8年分（2019〜2026）に実際に出た回数で決めています。'),
+    el('table', {}, el('tbody', {
+      html:
+        '<tr><th>てこ・てんびんの計算</th><td>8年中8年</td><td>てこジム</td></tr>'
+        + '<tr><th>回路・端子のつなぎ方</th><td>8年中7年</td><td>回路ジム</td></tr>'
+        + '<tr><th>とける量の計算</th><td>8年中3年</td><td>水溶液ジム</td></tr>'
+        + '<tr><th>星・月・太陽</th><td>毎年（地学の大問の中）</td><td>全選択ジム</td></tr>'
+        + '<tr><th>すべて選べ・実験の読み取り</th><td>毎年</td><td>全選択ジム</td></tr>'
+    })),
+    el('p', { class: 'tiny' }, 'ばねと滑車は入れていません。8年間の筑駒で1回も出ていないためです。')
   ));
 }
 
@@ -1413,7 +1741,8 @@ function viewPractice(a) {
   if (S.i >= S.q.length) return practiceDone(a);
   const q = S.q[S.i];
   a.append(el('div', { class: 'card' },
-    el('div', {}, el('span', { class: 'pill' }, `${S.i + 1} / ${S.q.length}`), el('span', { class: 'pill' }, q.topic)),
+    el('div', {}, el('span', { class: 'pill' }, `${S.i + 1} / ${S.q.length}`), el('span', { class: 'pill' }, q.topic),
+      S.i > 0 ? el('span', { class: 'pill ' + (S.ok === S.i ? 'o' : '') }, `ここまで ${S.ok} / ${S.i} 正解`) : null),
     el('div', { class: 'bar' }, el('i', { style: `width:${S.i / S.q.length * 100}%` })),
     el('div', { class: 'qbox' }, q.q),
     q.cond ? el('div', { class: 'cond' }, q.cond) : null,
@@ -1539,18 +1868,55 @@ function finish(q, ok, area, skipExp) {
 function practiceDone(a) {
   const S = SESSION;
   logSession(S.mode, S.q.length, S.ok);
+  const pr = praiseFor(S.ok, S.q.length);
+
+  // ほめる
+  a.append(el('div', { class: 'card' },
+    el('div', { class: 'praise' },
+      el('div', { class: 'em' }, pr.em),
+      el('div', { class: 'tx' }, pr.tx),
+      el('div', { class: 'sb' }, pr.sb)),
+    el('div', { class: 'ring' }, ...S.done.map(d => el('span', { class: d.ok ? 'o' : 'x' }))),
+    el('p', { style: 'text-align:center;font-size:22px;font-weight:800;margin:10px 0 2px' }, S.ok + ' / ' + S.q.length + ' 問'),
+    streakDays() ? el('div', { class: 'streakbox', style: 'margin-top:12px' },
+      el('div', { class: 'n' }, String(streakDays())),
+      el('div', {}, el('div', { style: 'font-weight:700' }, '日 続いている'), el('div', { class: 'tiny' }, '毎日少しずつが、いちばん身につきます'))) : null,
+  ));
+
+  // よかったところ／次に気をつけること
   const byTopic = {};
   S.done.forEach(d => { const k = d.topic.replace(/（.*/, ''); (byTopic[k] = byTopic[k] || { n: 0, ok: 0 }).n++; if (d.ok) byTopic[k].ok++; });
-  a.append(el('div', { class: 'card' },
-    el('h2', {}, 'おつかれさま'),
-    el('p', { style: 'font-size:28px;font-weight:800;margin:6px 0' }, `${S.ok} / ${S.q.length} 問`),
-    ...Object.entries(byTopic).map(([k, v]) => el('div', { class: 'kv' }, el('span', {}, k), el('b', {}, `${v.ok} / ${v.n}`))),
-    el('p', { class: 'tiny', style: 'margin-top:12px' }, '間違えたものは3日後、できたものは間をあけて、もう一度出ます。① Cepeda et al. (2008)：本番までの残り日数の10〜20%の間隔が最も残ります。'),
-    el('button', { class: 'btn-primary', style: 'margin-top:12px', onclick: () => { SESSION = null; VIEW = 'home'; $('#title').textContent = '筑駒理科ジム'; render(); } }, 'ホームへ'),
-  ));
+  const sorted = Object.entries(byTopic).sort((x, y) => (y[1].ok / y[1].n) - (x[1].ok / x[1].n));
+  const card = el('div', { class: 'card' }, el('h2', {}, '今回の結果'));
+  for (const [k, v] of sorted) {
+    card.append(el('div', { class: 'skill lv-' + (v.ok / v.n >= 0.8 ? 3 : v.ok / v.n >= 0.6 ? 2 : 1) },
+      el('div', { class: 'nm', style: 'width:9em' }, k),
+      el('div', { class: 'tr' }, el('i', { style: 'width:' + Math.round(v.ok / v.n * 100) + '%' })),
+      el('div', { class: 'vl' }, v.ok + '/' + v.n)));
+  }
+  if (sorted.length) {
+    const best = sorted[0], worst = sorted[sorted.length - 1];
+    if (best[1].ok === best[1].n) card.append(el('div', { class: 'watch good', style: 'margin-top:12px' },
+      el('div', { class: 'ic' }, '✅'), el('div', {}, el('div', { style: 'font-weight:700' }, best[0] + ' は全問正解'), el('div', { class: 'tiny' }, 'ここはもう大丈夫です。'))));
+    if (worst[1].ok < worst[1].n) card.append(el('div', { class: 'watch' },
+      el('div', { class: 'ic' }, '⚠️'), el('div', {}, el('div', { style: 'font-weight:700' }, '次に気をつけるのは ' + worst[0]),
+        el('div', { class: 'tiny' }, 'まちがえた問題は3日後にまた出ます。そのとき解ければ、身についた合図です。'))));
+  }
+  a.append(card);
+
+  // まちがえたもの
   const wrong = S.done.filter(d => !d.ok);
-  if (wrong.length) a.append(el('div', { class: 'card' }, el('h2', {}, '間違えたもの'),
-    ...wrong.map(w => el('div', { class: 'kv' }, el('span', {}, w.topic), el('span', { class: 'pill n' }, '×')))));
+  if (wrong.length) {
+    const wc = el('div', { class: 'card' }, el('h2', {}, 'まちがえたもの（' + wrong.length + '件）'),
+      el('p', { class: 'tiny' }, '3日後にもう一度出ます。解けたら7日後、14日後と間があいていきます。'));
+    wrong.forEach(w => wc.append(el('div', { class: 'kv' }, el('span', {}, w.topic), el('span', { class: 'pill n' }, '3日後に再出題'))));
+    a.append(wc);
+  }
+
+  a.append(el('div', { class: 'card' },
+    el('div', { class: 'grid g2' },
+      el('button', { class: 'btn-primary', onclick: () => startPractice(S.q.length, S.mode === 'mix' ? null : S.mode) }, 'もう1セット'),
+      el('button', { class: 'btn-ghost', onclick: () => { SESSION = null; VIEW = 'home'; $('#title').textContent = '筑駒理科ジム'; render(); } }, 'ホームへ'))));
 }
 
 /* ============================================================
@@ -1713,13 +2079,41 @@ function viewRecord(a) {
     } }, '点検する')));
 }
 function labelOf(k) {
-  if (k.startsWith('lever:')) return { 'lever:tip': 'てこ（倒れる境目）', 'lever:tipYN': 'てこ（倒れるか）', 'lever:support': '両端で支える', 'lever:spring': 'ばね' }[k] || k;
-  if (k.startsWith('sol:')) return { 'sol:crystal': '水溶液（冷やすと出てくる固体）', 'sol:leftover': '水溶液（とけ残り）', 'sol:water': '水溶液（必要な水）', 'sol:satw': '水溶液（水よう液の重さ）' }[k] || k;
+  // ⛔ 内部の記号（lever:bal-w など）をそのまま画面に出さない。
+  //    分からないものは分野名だけを返す。
+  const LEVER = {
+    'lever:tip': 'てこ（倒れる境目）',
+    'lever:tipYN': 'てこ（倒れるかどうか）',
+    'lever:bal-w': 'てこ（つりあう重さ）',
+    'lever:bal-d': 'てこ（つりあう位置）',
+  };
+  const SOL = {
+    'sol:crystal': '水溶液（冷やすと出てくる固体）',
+    'sol:leftover': '水溶液（とけ残り）',
+    'sol:water': '水溶液（必要な水の量）',
+    'sol:satw': '水溶液（水よう液の重さ）',
+  };
+  if (k.startsWith('lever:')) return LEVER[k] || 'てこ';
+  if (k.startsWith('sol:')) return SOL[k] || '水溶液';
   if (k.startsWith('circ:board')) return '回路（端子に導線をつなぐ）';
-  if (k.startsWith('circ:')) { const p = k.split(':'); const c = CIRCUITS.find(x => x.id === p[1]); return `回路 ${c ? c.title : p[1]}（${{ off: '消灯', bright: '明るさ', batt: '電池の電流' }[p[p.length - 1]] || ''}）`; }
-  const sa = SELECTALL.find(s => s.id === k); if (sa) return `すべて選べ: ${sa.q.slice(0, 22)}…`;
-  const cd = CARDS.find(c => c.id === k); if (cd) return `${cd.theme}（${cd.id}）`;
-  return k;
+  if (k.startsWith('circ:')) {
+    const p = k.split(':');
+    const c = CIRCUITS.find(x => x.id === p[1]);
+    const kindName = { off: 'つかない豆電球', bright: '明るさの順', batt: '電池を流れる電流' }[p[p.length - 1]];
+    if (!c) return '回路' + (kindName ? '（' + kindName + '）' : '');
+    // 配線の名前は長いので、豆電球の数だけを出す
+    const n = c.elems.filter(e => e.type === 'bulb').length;
+    return '回路（豆電球' + n + '個・' + (kindName || '') + '）';
+  }
+  const sa = SELECTALL.find(s => s.id === k);
+  if (sa) {
+    // 問題文の冒頭ではなく、分野と中身が分かる短い名前にする
+    const t = sa.q.replace(/^次のうち、?/, '').replace(/をすべて選べ。?$/, '').replace(/。$/, '');
+    return 'すべて選べ・' + sa.cat + '（' + (t.length > 18 ? t.slice(0, 18) + '…' : t) + '）';
+  }
+  const cd = CARDS.find(c => c.id === k);
+  if (cd) return 'ミス帳・' + cd.cat + '（' + cd.theme + '）';
+  return '（記録なし）';
 }
 
 render();
